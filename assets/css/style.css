@@ -1,5 +1,5 @@
 body,
-li.featured a { font-family: 'Roboto', sans-serif; font-style: normal; }
+li.featured a { font-family: 'Roboto', sans-serif; font-weight: 100; font-style: normal; }
 
 .btn,
 .hero-txt,
@@ -93,7 +93,11 @@ hr.white { border-color: #F3AE9B; }
 .lanyrd:hover { background: url('../images/icons/lanyrd-blue.png'); }
 .eventbrite { background: url('../images/icons/eventbrite-white.png'); }
 .eventbrite:hover { background: url('../images/icons/eventbrite-blue.png'); }
+.joindin { background: url('../images/icons/joindin-white.png'); }
+.joindin:hover { background: url('../images/icons/joindin-blue.png'); }
+.session-info .joindin { background: url('../images/icons/joindin-blue.png'); margin-right: 8px; position: relative; top: 5px; }
 .evtsiteico, .evtsiteico:hover { display: inline-block; width: 18px; height: 18px; background-repeat: no-repeat; overflow: hidden; }
+
 
 .icon { display: inline-block; background-repeat: no-repeat; overflow: hidden; }
 .icon-docs { background: url('../images/icons/icon-docs.png'); width: 90px; height: 90px; margin-right: 15px; }
@@ -455,7 +459,9 @@ label.error { display: block; }
 #schedule .panel-group .panel-heading+.panel-collapse .panel-body { border-top: 0; }
 #schedule .panel-group .panel .collapse.in { border-bottom: 0; }
 #schedule .panel-group .panel .panel-body { padding-left: 0; padding-right: 0; padding-top: 10px; }
-#schedule .author { font-size: 11pt; }
+#schedule .session-info { font-size: 11pt; }
+#schedule .session-info > a { display: block; margin-bottom: 10px; }
+#schedule .session-info > div { color: #2da9ff; }
 #schedule .time { margin-bottom: -10px; font-weight: 300; }
 #schedule .fa { margin-right: 5px; }
 #schedule .speaker-wrapper { position: absolute; left: 70px; top:25px; width: 50px; height: 50px; z-index: 1; }
@@ -602,19 +608,46 @@ label.error { display: block; }
 .pricing-col-featured .pricing-col-button { margin: 0; margin-top: 25px; background: #2da9ff; }
 .pricing-col-featured .pricing-col-button:hover { opacity: 0.9; }
 
-#sponsors .list-inline li { width: 30%; padding: 2% }
-#sponsors .list-inline { margin-bottom:30px;}
-#sponsors img{ width: 100%;}
+#sponsors .list-inline { margin-bottom: 30px;}
+#sponsors .list-inline li { width: 30%; padding: 2%; margin-bottom: 30px; }
+#sponsors .list-inline li.sponsor { position:relative; }
+#sponsors .list-inline li.sponsor:after {
+   position: relative;
+   top: 20px;
+   color:white;
+   text-align:center;
+   padding: 4px 8px;
+   font-weight: bold;
+   font-size: 0.8em;
+   font-family: Verdana;
+}
+#sponsors .list-inline li.sponsor.diamond:after {
+   content: "DIAMOND SPONSOR";
+   background: #0ABAE9;
+}
+#sponsors .list-inline li.sponsor.ruby:after {
+   content: "RUBY SPONSOR";
+   background: #CC342D;
+}
+#sponsors .list-inline li.sponsor.emerald:after {
+   content: "EMERALD SPONSOR";
+   background: #5B9C64;
+}
+#sponsors .list-inline li.sponsor.sapphire:after {
+   content: "SAPPHIRE SPONSOR";
+   background: #0F52BA;
+}
 
-#location-gmap { width:100%; height:650px; }
-#location-gmap img { max-width:none; }
-#location-gmap label { width: auto; display: inline; }
-#map {position: relative; padding:172px 0px;}
-.location {background:#fff; padding:20px 25px; z-index: 1;}
-.location ul {list-style:none; padding-left:10px;}
-.location li {margin:25px 0px; font-size: 15pt;}
-.location li  i{padding-right:15px; font-size: 15pt;}
-#canvas-map { position: absolute; height:700px; width:100%; top: 0;right: 0;bottom: 0;left: 0; z-index: 1; }
+#sponsors .list-inline li a img{ width: 100%;}
+
+#map { position: relative; padding: 50px 0 0 0; }
+@media (min-width: 768px) { #map .col-md-offset-1  { margin-left: 5%; } }
+.location { background: #fff; z-index: 1; }
+.location h3 { margin-left: 3%; }
+.location ul { list-style:none; padding-left: 10px; }
+.location li { margin:25px 0px; font-size: 15pt;}
+.location li  i { padding-right: 15px; font-size: 15pt;}
+#canvas-map { position: absolute; height: 725px; width: 100%; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; }
 
 #footer { padding: 0; }
 #footer .navigation-bar > li a { color: #536371; }

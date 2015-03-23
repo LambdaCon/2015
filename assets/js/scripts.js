@@ -31,8 +31,8 @@
 
         var flexSlider = $('.flexslider').flexslider({
           animation: "slide",
-          animationLoop: false,
-          itemWidth: 300,
+          animationLoop: true,
+          itemWidth: 285,
           itemMargin: 5,
           minItems: 2,
           maxItems: 4,
@@ -44,9 +44,18 @@
           useCSS: false
         });
 
-        flexSlider.data('flexslider').pause();
+        var flexSliderObj = flexSlider.data('flexslider');
+        flexSliderObj.pause();
         
-        // fade in .back-to-top
+        $(".speaker-link").click(function (e){
+            var speakerId = $(e.currentTarget).data('speakerId');
+            var speakerIndex = flexSlider.find(speakerId).index() + 1;
+            var speakersPerSlide = flexSliderObj.visible;
+            var speakerSlideIndex = Math.ceil(speakerIndex / speakersPerSlide);
+            flexSliderObj.flexAnimate(speakerSlideIndex - 1)
+        });
+
+        // fade in back-to-top
         $(window).scroll(function () {
             if ($(this).scrollTop() > 500) {
                 app.el['back-to-top'].fadeIn();
@@ -109,6 +118,26 @@
         });
 
         $('.fancybox').fancybox();
+
+		google.maps.event.addDomListener(window, 'load', function () {
+			var mapOptions = {
+				zoom: 15,
+				scrollwheel: false,
+				panControl: false,
+				mapTypeControl: false,
+				streetViewControl: false,
+				center: new google.maps.LatLng(44.491, 11.3125)
+			};
+
+			var map = new google.maps.Map(document.getElementById('canvas-map'),mapOptions);
+			var image = 'assets/images/position.png';
+			var myLatLng = new google.maps.LatLng(44.488370, 11.328466);
+			var beachMarker = new google.maps.Marker({
+				position: myLatLng,
+				map: map,
+				icon: image
+			});
+		});
 
         if (window.CKEDITOR) {
           CKEDITOR.on("instanceReady", function(event) {

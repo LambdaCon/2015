@@ -11,14 +11,17 @@
     <meta name="keywords" content="FP, functional, programming">
     <meta name="author" content="Coders TUG">
 
+    <meta property="og:site_name" content="LambdaCon - funtastic code and people" />
     <meta property="og:title" content="LambdaCon - funtastic code and people" />
-    <meta property="og:type" content="website" />
-    <meta property="og:description" content="The Italian conference on Functional Programming">
+    <meta property="og:description" content="The Italian conference on Functional Programming" />
     <meta property="og:url" content="http://www.lambdacon.org" />
-    <meta property="og:image:url" content="http://www.lambdacon.org/assets/images/social/logo-blue.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="640" />
-    <meta property="og:image:height" content="640" />
+    <meta property="og:image" content="http://www.lambdacon.org/assets/images/social/logo-blue.png" >
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LambdaCon - funtastic code and people">
+    <meta name="twitter:description" content="The Italian conference on Functional Programming">
+    <meta name="twitter:url" content="http://www.lambdacon.org">
+    <meta name="twitter:image:src" content="http://www.lambdacon.org/assets/images/social/logo-blue.png">
 
     <title>LambdaCon - funtastic code and people</title>
 
@@ -41,12 +44,12 @@
     <meta name="msapplication-TileImage" content="/assets/images/favicons/mstile-144x144.png">
     <meta name="msapplication-config" content="/assets/images/favicons/browserconfig.xml">
 
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:200,300,700' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:700" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Roboto:200,300,700" rel="stylesheet" type="text/css">
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/animate.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="assets/css/font-lineicons.css" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/jquery.fancybox.css" type="text/css" media="all" />
     <link rel="stylesheet" href="assets/css/flexslider.css" id="flexslider" type="text/css" media="all" />
@@ -61,7 +64,9 @@
     <div id="mask">
       <div id="loader">&nbsp;</div>
     </div>
+
     <header id="mobileheader" class="navigation-bar-header light visible-xs"></header>
+
     <section id="hero" class="light">
       <div class="overlay"></div>
       <div class="container">
@@ -84,6 +89,14 @@
                 <li>
                   <a href="http://github.com/LambdaCon"><span class="fa fa-github"></span></a>
                 </li>
+                <li>
+                  <a href="http://joind.in/event/LambdaCon"><span class="evtsiteico joindin"></span></a>
+                </li>
+                <!--
+                <li>
+                  <a href="http://vimeo.com/channels/LambdaCon"><span class="fa fa-vimeo-square"></span></a>
+                </li>
+                -->
               </ul>
             </nav>
             <div class="hero-small">
@@ -118,16 +131,14 @@
           <ul class="navigation-bar navigation-bar-left">
             <li class="active"><a href="#about">About</a></li>
             <li><a href="#schedule">Schedule</a></li>
-            <li><a href="#speakers">Speakers</a></li>
+            <li><a class="speaker-link" href="#speakers" data-speaker-id="#">Speakers</a></li>
             <!--
               <li><a href="#stat">Facts</a></li>
               <li><a href="#price">Prices</a></li>
             -->
             <li><a href="#sponsors">Sponsors</a></li>
             <li><a href="#staff">Staff</a></li>
-            <!--
-              <li><a href="#contacts">Contacts</a></li>
-            -->
+            <li><a href="#map">Location</a></li>
             <li class="featured">
               <a href="http://lambdacon.eventbrite.com/?aff=site"><i class="fa fa-ticket"></i>Get tickets</a>
             </li>
@@ -159,7 +170,10 @@
               <a href="#lcSessionTypes" data-toggle="tab"><i class="icon icon-chat-messages-01"></i> Session types</a>
             </li>
             <li>
-              <a href="#lcCounters" data-toggle="tab"><i class="icon icon-faces-users-04"></i> About us</a>
+              <a href="#lcAboutUs" data-toggle="tab"><i class="icon icon-faces-users-04"></i> About us</a>
+            </li>
+            <li>
+              <a href="#lcCodeOfConduct" data-toggle="tab"><i class="icon icon-badges-votes-01"></i> COC</a>
             </li>
           </ul>
           <div class="tab-content">
@@ -246,7 +260,7 @@
                 </div>
               </article>
             </div>
-            <div class="tab-pane fade" id="lcCounters">
+            <div class="tab-pane fade" id="lcAboutUs">
               <article class="row">
                 <div class="col-md-5 col-sm-5 animated hiding" data-animation="fadeInLeft" data-delay="300">
                   <img class="img-responsive" src="assets/images/about/people-network.jpg" alt="People network" />
@@ -256,6 +270,19 @@
                   <p>A conference for people eager to know more about <span class="highlight">functional programming</span>, combining talks with hands-on sessions to take your skills to the <span class="highlight">next level</span></p>
                   <p>LambdaCon is focused on learning the functional approach, understanding in which scenarios it is better to use FP, discovering what can be done with current languages and technologies and exploring current best practices</p>
                   <p>Network with other <span class="highlight">fun</span>atics, learn something new, share your knowledge and experiences and have a lot of <span class="highlight">fun</span></p>
+                </div>
+              </article>
+            </div>
+            <div class="tab-pane fade" id="lcCodeOfConduct">
+              <article class="row">
+                <div class="col-md-5 col-sm-5 animated hiding" data-animation="fadeInLeft" data-delay="300">
+                  <img class="img-responsive" src="assets/images/about/code-of-conduct.jpg" alt="Ethics" />
+                </div>
+                <div class="col-md-6 col-sm-6 text-left animated hiding" data-animation="fadeInRight" data-delay="300">
+                  <h6>Our ethics</h6>
+                  <p><span class="highlight">LambdaCon</span> is dedicated to providing a harassment-free conference experience for everyone, regardless of gender, sexual orientation, disability, physical appearance, body size, race, or religion.</p>
+                  <p>We do not tolerate harassment of conference participants in any form.</p>
+                  <p>Sexual language and imagery is not appropriate for any conference venue, including talks. Conference participants violating these rules may be sanctioned or expelled from the conference without a refund at the discretion of the conference organizers.</p>
                 </div>
               </article>
             </div>
@@ -270,7 +297,7 @@
         <div class="row">
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="counter animated hiding" data-animation="fadeInDown" data-delay="0">
-              <div class="stat"><span class="value" data-from="0" data-to="10">10</span>+</div>
+              <div class="stat"><span class="value" data-from="0" data-to="24">24</span>+</div>
               <div class="stat-info">hours</div>
               <hr />
               <!--
@@ -280,7 +307,7 @@
           </div>
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="counter animated hiding" data-animation="fadeInDown" data-delay="500">
-              <div class="stat"><span class="value" data-from="0" data-to="10">10</span></div>
+              <div class="stat"><span class="value" data-from="0" data-to="20">20</span>+</div>
               <div class="stat-info">speakers</div>
               <hr />
               <!--
@@ -290,7 +317,7 @@
           </div>
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="counter animated hiding" data-animation="fadeInDown" data-delay="1000">
-              <div class="stat"><span class="value" data-from="0" data-to="6">6</span>+</div>
+              <div class="stat"><span class="value" data-from="0" data-to="10">10</span>+</div>
               <div class="stat-info">languages</div>
               <hr />
               <!--
@@ -300,8 +327,8 @@
           </div>
           <div class="col-md-3 col-sm-3 col-xs-6">
             <div class="counter animated hiding" data-animation="fadeInDown" data-delay="1500">
-              <div class="stat"><span class="value" data-from="0" data-to="2">2</span></div>
-              <div class="stat-info">conference rooms</div>
+              <div class="stat"><span class="value" data-from="0" data-to="6">6</span></div>
+              <div class="stat-info">conference halls</div>
               <hr />
               <!--
                 <p class="small">It is a long established fact that a reader will be.</p>
@@ -318,16 +345,16 @@
         <h3>Full schedule</h3>
         <div class="sub-title">Shortest way to explore what will happen on LambdaCon</div>
         <br />
+        <div class="btn-wrapper">
+          <a class="btn btn-xs" href="assets/images/schedule.pdf" target="_blank">
+            <span class="icon icon-filetypes-11"></span>
+            <span class="btn-txt">Download schedule</span>
+          </a>
+        </div>
         <br />
         <section class="nav-tabs-default">
           <ul class="nav nav-tabs">
             <li class="active">
-              <a href="#keynotes" data-toggle="tab">
-                <div class="title">Keynotes</div>
-                <div class="subtitle">Category hall</div>
-              </a>
-            </li>
-            <li>
               <a href="#talks" data-toggle="tab">
                 <div class="title">Talks</div>
                 <div class="subtitle">&nbsp;</div>
@@ -336,14 +363,31 @@
             <li>
               <a href="#workshops" data-toggle="tab">
                 <div class="title">Workshops</div>
-                <div class="subtitle">Monad hall</div>
+                <div class="subtitle">Closure hall</div>
               </a>
             </li>
           </ul>
           <div class="tab-content">
-            <div class="tab-pane fade in active" id="keynotes">
+            <div class="tab-pane fade in active talks-tab-pane" id="talks">
               <div class="tab-content">
-                <div class="tab-pane fade in active" id="keynoteOnlyTrack">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a href="#talksTrack1" data-toggle="tab">Currying hall</a>
+                  </li>
+                  <li>
+                    <a href="#talksTrack2" data-toggle="tab">Immutability hall</a>
+                  </li>
+                  <li>
+                    <a href="#talksTrack3" data-toggle="tab">Functor hall</a>
+                  </li>
+                  <li>
+                    <a href="#talksTrack4" data-toggle="tab">Applicative hall</a>
+                  </li>
+                  <li>
+                    <a href="#talksTrack5" data-toggle="tab">Monad hall</a>
+                  </li>
+                </ul>
+                <div class="tab-pane fade in active" id="talksTrack1" >
                   <div class="panel-group timeline-schedule">
                     <div class="panel panel-default" id="welcomeKeynote">
                       <div class="speaker-wrapper">
@@ -351,16 +395,19 @@
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#welcomeKeynote" href="#welcomeKeynoteItem">
+                          <div class="time"><i class="fa fa-clock-o"></i>09:30 - 09:45</div>
+                          <a>
                             Welcome keynote
                           </a>
                         </div>
                       </div>
-                      <div id="welcomeKeynoteItem" class="panel-collapse collapse in">
+                      <div id="welcomeKeynoteDetails">
                         <div class="panel-body">
                           <article>
-                            <p class="author"><a href="#staff"><strong><i class="fa fa-user"></i>Vlad Saftoiu</strong></a></p>
+                            <div class="session-info">
+                                <a href="#staff"><strong><i class="fa fa-user"></i>Vlad Saftoiu</strong></a>
+                                <a href="http://joind.in/13677"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
@@ -371,235 +418,49 @@
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#openingKeynote" href="#openingKeynoteItem">
+                          <div class="time"><i class="fa fa-clock-o"></i>09:45 - 10:30</div>
+                          <a class="collapsed" href="#openingKeynoteDetails" data-toggle="collapse">
                             Opening keynote - Fun with categories
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="openingKeynoteItem" class="panel-collapse collapse in">
+                      <div id="openingKeynoteDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
+                            <p class="session-description">
                               A category is an embarrassingly simple yet powerful concept.
                               It's behind Unix pipes, simple arithmetic, programming types, functions, state and side effects.
                               I will show you how categories can be used to design generic C++ libraries.
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Bartosz Milewski</strong></a></p>
+                            <div class="session-info">
+                                <a class="speaker-link" href="#speakers" data-speaker-id="#milewski"><strong><i class="fa fa-user"></i>Bartosz Milewski</strong></a>
+                                <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                                <a href="http://joind.in/13646"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="closingKeynote">
-                      <div class="speaker-wrapper">
-                        <img src="assets/images/staff/luigi-berrettini.jpg" class="img-responsive img-circle" alt="Luigi Berrettini" />
-                      </div>
-                      <div class="panel-heading">
-                        <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#closingKeynote" href="#closingKeynoteItem">
-                            Closing keynote
-                          </a>
-                        </div>
-                      </div>
-                      <div id="closingKeynoteItem" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <article>
-                            <p class="author"><a href="#staff"><strong><i class="fa fa-user"></i>Luigi Berrettini</strong></a></p>
-                          </article>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="tab-pane fade talks-tab-pane" id="talks">
-              <div class="tab-content">
-                <ul class="nav nav-tabs">
-                  <li class="active">
-                    <a href="#talksTrack1" data-toggle="tab">Currying hall</a>
-                  </li>
-                  <li>
-                    <a href="#talksTrack2" data-toggle="tab">Closure hall</a>
-                  </li>
-                  <!--
-                  <li>
-                    <a href="#talksTrack3" data-toggle="tab">Functor hall</a>
-                  </li>
-                  <li>
-                    <a href="#talksTrack4" data-toggle="tab">Immutability hall</a>
-                  </li>
-                  -->
-                </ul>
-                <div class="tab-pane fade in active" id="talksTrack1" >
-                  <div class="panel-group timeline-schedule" id="talksTrack1">
-                    <div class="panel panel-default" id="talksTrack1Session1">
-                      <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/tomek-borek.jpg" class="img-responsive img-circle" alt="Tomek Borek" />
-                      </div>
-                      <div class="panel-heading">
-                        <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session1Item">
-                            Why bother with FP?
-                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
-                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="talksTrack1Session1Item" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <article>
-                            <p>
-                              <div>
-                                Instead of just bashing other paradigms I'll provide real arguments for FP, backed.
-                              </div>
-                              <div>
-                                I’ll talk about:
-                              </div>
-                              <ul>
-                                <li>complexity, accidental and essential</li>
-                                <li>state manipulation / mutation</li>
-                                <li>pure OOP model (Smalltalk, though model is quite language agnostic)</li>
-                              </ul>
-                            </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Tomek Borek</strong></a></p>
-                          </article>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default" id="talksTrack1Session2">
-                      <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/yan-cui.jpg" class="img-responsive img-circle" alt="Yan Cui" />
-                      </div>
-                      <div class="panel-heading">
-                        <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session2Item" class="collapsed">
-                            F# in the real world
-                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
-                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="talksTrack1Session2Item" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <article>
-                            <p>
-                              <div>
-                                F# is an incredibly versatile and expressive language and enables
-                                you to solve a wide array of problems succinctly and efficiently.
-                              </div>
-                              <div>
-                                This talk illustrates, with real-world examples, how the Gamesys social
-                                team is using F# to build the backend services that support around 1
-                                million Daily Active Users (DAU) and 250 million daily requests across
-                                its social games on both mobile and web platforms.
-                              </div>
-                              <div>
-                                Talk objectives:
-                              </div>
-                              <ul>
-                                <li>
-                                  Demonstrate the use of F# to write clean, concise game logic as well as infrastructure
-                                  code, the same techniques and concepts can be easily applied to other domains
-                                </li>
-                                <li>
-                                  Demonstrate how F# can help tackle recurring business problems such as efficiency,
-                                  correctness, complexity and time to market
-                                </li>
-                              </ul>
-                            </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Yan Cui</strong></a></p>
-                          </article>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default" id="talksTrack1Session3">
-                      <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/alfredo-di-napoli.jpg" class="img-responsive img-circle" alt="Alfredo Di Napoli" />
-                      </div>
-                      <div class="panel-heading">
-                        <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session3Item" class="collapsed">
-                            Using Haskell professionally
-                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
-                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="talksTrack1Session3Item" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <article>
-                            <p>
-                              <div>
-                                Studying FP during free time is a lot of fun, but most people are reluctant in making an effort learning
-                                a functional language because they think it would be impractical to use in the everyday job industry.
-                              </div>
-                              <div>
-                                This talk is going to show that not only is it possible to use Haskell to earn a living, but that the benefits
-                                from immutability, purity and conciseness that Haskell offers are the perfect ingredients to make a business succeeds.
-                              </div>
-                            </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Alfredo Di Napoli</strong></a></p>
-                          </article>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default" id="talksTrack1Session4">
-                      <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/marek-kubica.jpg" class="img-responsive img-circle" alt="Marek Kubica" />
-                      </div>
-                      <div class="panel-heading">
-                        <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session4Item" class="collapsed">
-                            From imperative to functional APIs
-                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
-                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
-                          </a>
-                        </div>
-                      </div>
-                      <div id="talksTrack1Session4Item" class="panel-collapse collapse">
-                        <div class="panel-body">
-                          <article>
-                            <p>
-                              <div>
-                                Libraries and APIs often shape how our program looks like. Unfortunately, we often have to deal with
-                                imperfect libraries that have a brittle API, partly due to a lack of care, partly to language restrictions.
-                              </div>
-                              <div>
-                                In this talk we will explore how we can use features of OCaml, a functional
-                                programming language, to improve an interface provided by a C library.
-                              </div>
-                            </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Marek Kubica</strong></a></p>
-                          </article>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="panel panel-default" id="talksTrack1Session5">
+                    <div class="panel panel-default" id="clojureRedeployed">
                       <div class="speaker-wrapper">
                         <img src="assets/images/speakers/jan-stępień.jpg" class="img-responsive img-circle" alt="Jan Stępień" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <!-- <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div> -->
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session5Item" class="collapsed">
+                          <div class="time"><i class="fa fa-clock-o"></i>11:00 - 11:45</div>
+                          <a class="collapsed" href="#clojureRedeployedDetails" data-toggle="collapse">
                             Clojure redeployed
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack1Session5Item" class="panel-collapse collapse">
+                      <div id="clojureRedeployedDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
+                            <p class="session-description">
                               <div>
                                 At stylefruits we've been using Clojure on production since late 2012.
                                 We've made a lot of mistakes and we've learned a lot.
@@ -622,227 +483,1173 @@
                                 while prototyping, deploying and maintaining our newest project.
                               </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>Jan Stępień</strong></a></p>
+                            <div class="session-info">
+                                <a class="speaker-link" href="#speakers" data-speaker-id="#stepien"><strong><i class="fa fa-user"></i>Jan Stępień</strong></a>
+                                <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                                <div><strong><i class="fa fa-code"></i>Clojure</strong></div>
+                                <a href="http://joind.in/13647"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <!--
-                    <div class="panel panel-default" id="talksTrack1Session6">
+                    <div class="panel panel-default" id="persistingPersistentDataStructures">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/michael-newton.jpg" class="img-responsive img-circle" alt="Michael Newton" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack1" href="#talksTrack1Session6Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">12:00 - 12:45</i></div>
+                          <a class="collapsed" href="#persistingPersistentDataStructuresDetails" data-toggle="collapse">
+                            Persisting persistent data structures
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack1Session6Item" class="panel-collapse collapse">
+                      <div id="persistingPersistentDataStructuresDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                Reading and writing to data stores is often a pain point for programmers new to functional programming between the perceived loss of “purity”
+                                and the awkward mismatch between functional APIs and the relational data models or mutable documents in a document store.
+                              </div>
+                              <div>
+                                Event sourcing is a well established alternative that meshes well with functional concepts of immutability and pure functions.
+                              </div>
+                              <div>
+                                Using Event Store and F#, we’ll see how to use simple functional constructs like lists and folds to avoid the object-relational impedance mismatch
+                                and we’ll also investigate what makes for a "good" event to store, using techniques from Domain Driven Design.
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#newton"><strong><i class="fa fa-user"></i>Michael Newton</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>F#</strong></div>
+                              <a href="http://joind.in/13648"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    -->
+                    <div class="panel panel-default" id="dissectingTheRabbit">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/alvaro-videla.jpg" class="img-responsive img-circle" alt="Alvaro Videla" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">14:00 - 14:45</i></div>
+                          <a class="collapsed" href="#dissectingTheRabbitDetails" data-toggle="collapse">
+                            Dissecting the Rabbit
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="dissectingTheRabbitDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                The talk aims to show how RabbitMQ uses Erlang/OTP to build a message broker.
+                                We will go through "a day in the life of a message" to explore the different patterns used by RabbitMQ to handle message ingress, routing and message delivery.
+                              </div>
+                              <div>
+                                We are going to cover areas like:
+                              </div>
+                              <ul>
+                                <li>how Erlang Pattern Matching is used to implement the AMQP protocol</li>
+                                <li>RabbitMQ Boot System: how does the broker boots until it's ready to accept messages</li>
+                                <li>a day in the life of a message: the path a message takes while passing across RabbitMQ</li>
+                                <li>flow Control for Erlang Processes and the Credit Flow implementation</li>
+                                <li>supervisor Trees, RabbitMQ own behaviours and more</li>
+                              </ul>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#videla"><strong><i class="fa fa-user"></i>Alvaro Videla</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Erlang</strong></div>
+                              <a href="http://joind.in/13649"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="theActorModelInFSharpAndAkkaNet">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/riccardo-terrell.jpg" class="img-responsive img-circle" alt="Riccardo Terrell" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">15:00 - 15:45</i></div>
+                          <a class="collapsed" href="#theActorModelInFSharpAndAkkaNetDetails" data-toggle="collapse">
+                            The Actor Model in F# and Akka.NET
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="theActorModelInFSharpAndAkkaNetDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Writing correct concurrent, fault-tolerant, scalable applications is no simple task.
+                                The struggle is generally the result of using the wrong tools or wrong level of abstraction.
+                              </div>
+                              <div>
+                                The Actor based concurrency model aims to simplify this process.
+                                The actor model is a mathematical model of concurrent computation originated in 1973 by Carl Hewitt, Peter Bishop, and Richard Steiger.
+                                Actors raise the abstraction level and provide a better platform to build correct concurrent and scalable applications.
+                              </div>
+                              <div>
+                                This presentation will introduce concepts in architecture such as immutability, isolation and asynchronous processing
+                                utilizing tools such as Akka.NET which is a .NET port of the popular JVM framework Akka.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#terrell"><strong><i class="fa fa-user"></i>Riccardo Terrell</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>F#</strong></div>
+                              <a href="http://joind.in/13650"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="drinkingFromTheFirehoseTheErlangWay">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/mahesh-paolini-subramanya.jpg" class="img-responsive img-circle" alt="Mahesh Paolini-Subramanya" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">16:15 - 17:00</i></div>
+                          <a class="collapsed" href="#drinkingFromTheFirehoseTheErlangWayDetails" data-toggle="collapse">
+                            Drinking from the firehose the Erlang way
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="drinkingFromTheFirehoseTheErlangWayDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Imagine that you have tens of millions of endpoints, each of which is sending you a constant stream of data to the tunes of petabytes per second.
+                                You also have millions of uses who want to monitor and administer them and don't forget all the historical reports that these users insist upon all the time.
+                                And imagine that these users and endpoints are distributed all over the world.
+                              </div>
+                              <div>
+                                This pretty much describes our environment, one that we've implemented with not just Riak, but also ElasticSearch and Cassandra
+                                (because why going with one, when you can have all three), with Erlang tying all the moving pieces together.
+                              </div>
+                              <div>
+                                I will show how we successfully drink from this firehose of data without spilling a drop
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#paolini"><strong><i class="fa fa-user"></i>Mahesh Paolini-Subramanya</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Erlang</strong></div>
+                              <a href="http://joind.in/13651"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="fSharpInTheRealWorld">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/yan-cui.jpg" class="img-responsive img-circle" alt="Yan Cui" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">17:05 - 17:50</i></div>
+                          <a class="collapsed" href="#fSharpInTheRealWorldDetails" data-toggle="collapse">
+                            F# in the real world
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="fSharpInTheRealWorldDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                F# is an incredibly versatile and expressive language and enables
+                                you to solve a wide array of problems succinctly and efficiently.
+                              </div>
+                              <div>
+                                This talk illustrates, with real-world examples, how the Gamesys social
+                                team is using F# to build the backend services that support around 1
+                                million Daily Active Users (DAU) and 250 million daily requests across
+                                its social games on both mobile and web platforms.
+                              </div>
+                              <div>
+                                Talk objectives:
+                              </div>
+                              <ul>
+                                <li>
+                                  demonstrate the use of F# to write clean, concise game logic as well as infrastructure
+                                  code, the same techniques and concepts can be easily applied to other domains
+                                </li>
+                                <li>
+                                  demonstrate how F# can help tackle recurring business problems such as efficiency,
+                                  correctness, complexity and time to market
+                                </li>
+                              </ul>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#cui"><strong><i class="fa fa-user"></i>Yan Cui</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>F#</strong></div>
+                              <a href="http://joind.in/13652"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="closingKeynote">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/staff/luigi-berrettini.jpg" class="img-responsive img-circle" alt="Luigi Berrettini" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">18:00 - 18:30</i></div>
+                          <a>
+                            Closing keynote
+                          </a>
+                        </div>
+                      </div>
+                      <div id="closingKeynoteDetails">
+                        <div class="panel-body">
+                          <article>
+                            <div class="session-info">
+                              <a href="#staff"><strong><i class="fa fa-user"></i>Luigi Berrettini</strong></a>
+                              <a href="http://joind.in/13676"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div class="tab-pane fade" id="talksTrack2">
-                  <article>
-                    <p>No schedule yet</p>
-                  </article>
-                  <!--
-                  <div class="panel-group timeline-schedule" id="talksTrack2">
-                    <div class="panel panel-default" id="talksTrack2Session1">
+                  <div class="panel-group timeline-schedule">
+                    <div class="panel panel-default" id="fromImperativeToFunctionalApis">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/marek-kubica.jpg" class="img-responsive img-circle" alt="Marek Kubica" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session1Item">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">11:00 - 11:45</i></div>
+                          <a class="collapsed" href="#fromImperativeToFunctionalApisDetails" data-toggle="collapse">
+                            From imperative to functional APIs
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session1Item" class="panel-collapse collapse in">
+                      <div id="fromImperativeToFunctionalApisDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                Libraries and APIs often shape how our program looks like.
+                              </div>
+                              <div>
+                                Unfortunately we often have to deal with imperfect libraries with brittle API, partly due lack of care, partly due to language restrictions.
+                              </div>
+                              <div>
+                                In this talk we will explore how we can use features of OCaml, a functional programming language to improve on an interface provided by a C library.
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                                <a class="speaker-link" href="#speakers" data-speaker-id="#kubica"><strong><i class="fa fa-user"></i>Marek Kubica</strong></a>
+                                <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                                <div><strong><i class="fa fa-code"></i>OCaml</strong></div>
+                                <a href="http://joind.in/13653"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="talksTrack2Session2">
+                    <div class="panel panel-default" id="programmingWithAlgebras">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/bartosz-milewski.jpg" class="img-responsive img-circle" alt="Bartosz Milewski" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session2Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">12:00 - 12:45</i></div>
+                          <a class="collapsed" href="#programmingWithAlgebrasDetails" data-toggle="collapse">
+                            Programming with algebras
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session2Item" class="panel-collapse collapse">
+                      <div id="programmingWithAlgebrasDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                            <div>
+                                There are problems in programming that require the use of algebra to solve equations or to transform coordinates.
+                            </div>
+                            <div>
+                                That's not what I'm going to talk about.
+                            </div>
+                            <div>
+                                I want to talk about the algebra of data structures, of defining very general expressions and evaluating them using recursion schemes.
+                            </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#milewski"><strong><i class="fa fa-user"></i>Bartosz Milewski</strong></a>
+                              <div><strong><i class="fa fa-star"></i>Advanced</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Haskell</strong></div>
+                              <a href="http://joind.in/13654"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="talksTrack2Session3">
+                    <div class="panel panel-default" id="aLiveCodedAdventureHtml5GamesAndFrp">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/joe-nash.jpg" class="img-responsive img-circle" alt="Joe Nash" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session3Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">14:00 - 14:45</i></div>
+                          <a class="collapsed" href="#aLiveCodedAdventureHtml5GamesAndFrpDetails" data-toggle="collapse">
+                            A live-coded adventure: HTML5 games and FRP
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session3Item" class="panel-collapse collapse">
+                      <div id="aLiveCodedAdventureHtml5GamesAndFrpDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                This talk will leverage Elm and its powerful toolset to demonstrate how to quickly create HTML5 games and websites.
+                              </div>
+                              <div>
+                                No knowledge of Elm or functional reactive programming is assumed: concepts will be explained through live coding and audience interaction
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#nash"><strong><i class="fa fa-user"></i>Joe Nash</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Elm</strong></div>
+                              <a href="http://joind.in/13655"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="talksTrack2Session4">
+                    <div class="panel panel-default" id="lessonsFromErlang">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/simon-zelazny.jpg" class="img-responsive img-circle" alt="Simon Zelazny" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session4Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">15:00 - 15:45</i></div>
+                          <a class="collapsed" href="#lessonsFromErlangDetails" data-toggle="collapse">
+                            Lessons from Erlang
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session4Item" class="panel-collapse collapse">
+                      <div id="lessonsFromErlangDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                In this talk we will learn how to think when using a concurrent programming language and what problems we have to solve.
+                              </div>
+                              <div>
+                                We will take a look at the real tools Erlang gives you to write highly-available systems that let you sleep through the night: dynamic tracing and remote REPL.
+                              </div>
+                              <div>
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#zelazny"><strong><i class="fa fa-user"></i>Simon Zelazny</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Erlang</strong></div>
+                              <a href="http://joind.in/13656"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="talksTrack2Session5">
+                    <div class="panel panel-default" id="whatIsWrongWithOop">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/roberto-sasso.jpg" class="img-responsive img-circle" alt="Roberto Sasso" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session5Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">16:15 - 17:00</i></div>
+                          <a class="collapsed" href="#whatIsWrongWithOopDetails" data-toggle="collapse">
+                            What’s wrong with OOP
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session5Item" class="panel-collapse collapse">
+                      <div id="whatIsWrongWithOopDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                A deep dive tale about programming and logic.
+                              </div>
+                              <div>
+                                With a critical approach we’re going to walk through the path that brought us to what we know as “Object Oriented Programming”.
+                              </div>
+                              <div>
+                                We will examine the bad and good parts of the paradigm to, maybe, discover that the original idea is not so far from what we call “Functional Programming”.
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#sasso"><strong><i class="fa fa-user"></i>Roberto Sasso</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Haskell</strong></div>
+                              <div><strong><i class="fa fa-code"></i>C#</strong></div>
+                              <a href="http://joind.in/13657"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
-                    <div class="panel panel-default" id="talksTrack2Session6">
+                    <div class="panel panel-default" id="tddAsInTypeDirectedDevelopment">
                       <div class="speaker-wrapper">
-                        <img src="assets/images/speakers/__________SPEAKER__________.jpg" class="img-responsive img-circle" alt="__________SPEAKER__________" />
+                        <img src="assets/images/speakers/clément-delafargue.jpg" class="img-responsive img-circle" alt="Clément Delafargue" />
                       </div>
                       <div class="panel-heading">
                         <div class="panel-title">
-                          <div class="time"><i class="fa fa-clock-o"></i> XX:XX AM</div>
-                          <a data-toggle="collapse" data-parent="#talksTrack2" href="#talksTrack2Session6Item" class="collapsed">
-                            __________TITLE__________
+                          <div class="time"><i class="fa fa-clock-o">17:05 - 17:50</i></div>
+                          <a class="collapsed" href="#tddAsInTypeDirectedDevelopmentDetails" data-toggle="collapse">
+                            TDD as in Type-Directed Development
                             <div class="pull-right fa fa-angle-up collapse-angle"></div>
                             <div class="pull-right fa fa-angle-down collapse-angle"></div>
                           </a>
                         </div>
                       </div>
-                      <div id="talksTrack2Session6Item" class="panel-collapse collapse">
+                      <div id="tddAsInTypeDirectedDevelopmentDetails" class="panel-collapse collapse">
                         <div class="panel-body">
                           <article>
-                            <p>
-                              __________DESCRIPTION__________
+                            <p class="session-description">
+                              <div>
+                                Test-Driven Development is widely accepted as good practice, but can we do better?
+                              </div>
+                              <div>
+                                By specifying your program's behaviour with types, you can go a very long way, with more confidence and with less hassle than with tests.
+                              </div>
+                              <div>
+                                This talk will show how to use types not only for safety but also as guides, as well as a perfect means of communication.
+                              </div>
                             </p>
-                            <p class="author"><a href="#speakers"><strong><i class="fa fa-user"></i>__________SPEAKER__________</strong></a></p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#delafargue"><strong><i class="fa fa-user"></i>Clément Delafargue</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Scala</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Haskell</strong></div>
+                              <a href="http://joind.in/13658"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
                           </article>
                         </div>
                       </div>
                     </div>
                   </div>
-                  -->
                 </div>
                 <div class="tab-pane fade" id="talksTrack3">
+                  <div class="panel-group timeline-schedule">
+                    <div class="panel panel-default" id="whyBotherWithFp">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/tomek-borek.jpg" class="img-responsive img-circle" alt="Tomek Borek" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">11:00 - 11:45</i></div>
+                          <a  class="collapsed" href="#whyBotherWithFpDetails" data-toggle="collapse">
+                            Why bother with FP?
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="whyBotherWithFpDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Instead of just bashing other paradigms I'll provide real arguments for FP, backed.
+                              </div>
+                              <div>
+                                I’ll talk about:
+                              </div>
+                              <ul>
+                                <li>complexity, accidental and essential</li>
+                                <li>state manipulation / mutation</li>
+                                <li>pure OOP model (Smalltalk, though model is quite language agnostic)</li>
+                              </ul>
+                            </p>
+                            <div class="session-info">
+                                <a class="speaker-link" href="#speakers" data-speaker-id="#borek"><strong><i class="fa fa-user"></i>Tomek Borek</strong></a>
+                                <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                                <a href="http://joind.in/13659"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="lifeOfAnErlangProcess">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/roberto-aloi.jpg" class="img-responsive img-circle" alt="Roberto Aloi" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">12:00 - 12:45</i></div>
+                          <a class="collapsed" href="#lifeOfAnErlangProcessDetails" data-toggle="collapse">
+                            Life of an Erlang process
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="lifeOfAnErlangProcessDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                A high-level introduction to the Erlang programming language:
+                                among other topics, the talk covers Erlang processes, message passing, supervision trees, the let-it-crash approach and more.
+                              </div>
+                              <div>
+                                We unfold the skeleton of an Erlang process, explaining how the functional model makes the implementation of Erlang processes straightforward.
+                              </div>
+                              <div>
+                                We reveal the recipe of the secret Erlang sauce which makes possible the creation of reliable, scalable systems which never go down.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#aloi"><strong><i class="fa fa-user"></i>Roberto Aloi</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Erlang</strong></div>
+                              <a href="http://joind.in/13660"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="usingHaskellProfessionally">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/alfredo-di-napoli.jpg" class="img-responsive img-circle" alt="Alfredo Di Napoli" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">14:00 - 14:45</i></div>
+                          <a class="collapsed" href="#usingHaskellProfessionallyDetails" data-toggle="collapse">
+                            Using Haskell professionally
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="usingHaskellProfessionallyDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Studying FP during free time is a lot of fun, but most people are reluctant in making an effort learning a functional language
+                                because they think it would be impractical to use in the everyday job industry.
+                              </div>
+                              <div>
+                                This talk is going to show that not only is it possible to use Haskell to earn a living, but that the benefits from immutability,
+                                purity and conciseness that Haskell offers are the perfect ingredients to make a business succeeds.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#dinapoli"><strong><i class="fa fa-user"></i>Alfredo Di Napoli</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Haskell</strong></div>
+                              <a href="http://joind.in/13661"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="haskellForDataScience">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/vladimir-alekseichenko.jpg" class="img-responsive img-circle" alt="Vladimir Alekseichenko" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">15:00 - 15:45</i></div>
+                          <a class="collapsed" href="#haskellForDataScienceDetails" data-toggle="collapse">
+                            Haskell for data science
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="haskellForDataScienceDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Data Science it's really pretty buzzword, and I want also use this to promote Haskell.
+                              </div>
+                              <div>
+                                Usually data analysing associated with Python or R (maybe after Spark was released also Scala wants to join them).
+                              </div>
+                              <div>
+                                Drum roll... I want to show you how Haskell can help you with analysing data: we will be using it on real life examples
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#alekseichenko"><strong><i class="fa fa-user"></i>Vladimir Alekseichenko</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Haskell</strong></div>
+                              <a href="http://joind.in/13666"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="rustNowAndThen">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/flavio-percoco.jpg" class="img-responsive img-circle" alt="Flavio Percoco" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">16:15 - 17:00</i></div>
+                          <a class="collapsed" href="#rustNowAndThenDetails" data-toggle="collapse">
+                            Rust now and then
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="rustNowAndThenDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              A talk aiming to provide a functional view to a very young mainly system language that features things like algebraic data types, zero-cost abstractions and guarantees memory safety.
+                              Despite not being a pure functional language, Rust shows great potential in this area.
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#percoco"><strong><i class="fa fa-user"></i>Flavio Percoco</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Rust</strong></div>
+                              <a href="http://joind.in/13663"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="talksTrack4">
+                  <div class="panel-group timeline-schedule">
+                    <div class="panel panel-default" id="elixirLoveAtFirstSip">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/andrea-leopardi.jpg" class="img-responsive img-circle" alt="Andrea Leopardi" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">11:00 - 11:45</i></div>
+                          <a class="collapsed" href="#elixirLoveAtFirstSipDetails" data-toggle="collapse">
+                            Elixir: love at first sip
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="elixirLoveAtFirstSipDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                An introduction to the new and exciting Elixir programming language, a language based on the Erlang VM which compiles down to Erlang bytecode.
+                              </div>
+                              <div>
+                                The talk will showcase Elixir’s most powerful features, its support for concurrency and its wonderful macro system, while remaining a beginner’s introduction.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                                <a class="speaker-link" href="#speakers" data-speaker-id="#leopardi"><strong><i class="fa fa-user"></i>Andrea Leopardi</strong></a>
+                                <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                                <div><strong><i class="fa fa-code"></i>Elixir</strong></div>
+                                <a href="http://joind.in/13664"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="myAdventureWithElm">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/yan-cui.jpg" class="img-responsive img-circle" alt="Yan Cui" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">12:00 - 12:45</i></div>
+                          <a class="collapsed" href="#myAdventureWithElmDetails" data-toggle="collapse">
+                            My adventure with Elm
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="myAdventureWithElmDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Reactive Extensions (Rx) has brought reactive programming to the mainstream in recent years with successful adoption in languages such as C#, Java and JavaScript.
+                                But have you ever wondered what Rx will look like as a language?
+                              </div>
+                              <div>
+                                Elm is a new programming language based on the idea of Functional Reactive Programming (FRP).
+                                It lets you create highly interactive web applications without all the messy callbacks tangling around shared states.
+                              </div>
+                              <div>
+                                I will give a gentle introduction to Elm and share my experience learning Elm and recreating Missile Command in Elm with less than 250 LOC.
+                                You will leave this session with a handle on the Functional Reactive Programming paradigm and a basic understanding of the Elm language.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#cui"><strong><i class="fa fa-user"></i>Yan Cui</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Elm</strong></div>
+                              <a href="http://joind.in/13665"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="introductionToTheSparkEcosystem">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/federico-feroldi.jpg" class="img-responsive img-circle" alt="Federico Feroldi" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">14:00 - 14:45</i></div>
+                          <a class="collapsed" href="#introductionToTheSparkEcosystemDetails" data-toggle="collapse">
+                            Introduction to the Spark ecosystem
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="introductionToTheSparkEcosystemDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Did you ever wondered how you could run you Scala algorithms on thousands of cores?
+                              </div>
+                              <div>
+                                Apache Spark is a fast and general engine for large-scale data processing that is gaining a lot of momentum in the "big data" world.
+                              </div>
+                              <div>
+                                You will learn all the components and technologies in the Spark ecosystem and how to use them to scale your Scala code to thousands of cores.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#feroldi"><strong><i class="fa fa-user"></i>Federico Feroldi</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Scala</strong></div>
+                              <a href="http://joind.in/13662"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="streamsOnTopOfScala">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/quentin-adam.jpg" class="img-responsive img-circle" alt="Quentin Adam" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">15:00 - 15:45</i></div>
+                          <a class="collapsed" href="#streamsOnTopOfScalaDetails" data-toggle="collapse">
+                            Streams on top of Scala
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="streamsOnTopOfScalaDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Everybody has something about streams on the Scala platform: iteratee, scalaz.streams, reactive streams, akka.io, and so on.
+                              </div>
+                              <div>
+                                But are they useful for the day to day developer job? Are they only for database drivers? What are the differences between all this technologies?
+                              </div>
+                              <div>
+                                You will understand what are streams, why you need them and how to use them in real world scenarios
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#adam"><strong><i class="fa fa-user"></i>Quentin Adam</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Scala</strong></div>
+                              <a href="http://joind.in/13667"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="monadicParserCombinatorsWithTypeScript">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/simone-busoli.jpg" class="img-responsive img-circle" alt="Simone Busoli" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">16:15 - 17:00</i></div>
+                          <a class="collapsed" href="#monadicParserCombinatorsWithTypeScriptDetails" data-toggle="collapse">
+                            Monadic parser combinators with TypeScript
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="monadicParserCombinatorsWithTypeScriptDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                TypeScript is a fairly new programming language of the family of those languages that compile to JavaScript.
+                              </div>
+                              <div>
+                                Among the features it adds on top of JavaScript are some usually found in statically typed languages, which make it an
+                                interesting candidate for expressing certain software constructs, like monads, which benefit from static type checking.
+                              </div>
+                              <div>
+                                This session shows how to build generic parsers using combinators and a monadic approach for combination.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#busoli"><strong><i class="fa fa-user"></i>Simone Busoli</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>TypeScript</strong></div>
+                              <a href="http://joind.in/13668"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-pane fade" id="talksTrack5">
+                  <div class="panel-group timeline-schedule">
+                    <div class="panel panel-default" id="itIsTheTypeTheoryBaby">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/michele-finelli.jpg" class="img-responsive img-circle" alt="Michele Finelli" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">11:00 - 11:45</i></div>
+                          <a class="collapsed" href="#itIsTheTypeTheoryBabyDetails" data-toggle="collapse">
+                            It's the type theory baby!
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="itIsTheTypeTheoryBabyDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                A gentle introduction to type theory (well, not so gentle ...): my position is that one of the most important feature of a language,
+                                in order to help programmers to write correct code, is the type system.
+                              </div>
+                              <div>
+                                The talk aims at supporting that position and makes a brief excursus on the history of types.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#finelli"><strong><i class="fa fa-user"></i>Michele Finelli</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <a href="http://joind.in/13669"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="theRelationWithTypes">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/marcin-kostrzewa.jpg" class="img-responsive img-circle" alt="Marcin Kostrzewa" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">12:00 - 12:45</i></div>
+                          <a class="collapsed" href="#theRelationWithTypesDetails" data-toggle="collapse">
+                            The relation with types
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="theRelationWithTypesDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                Have you ever wondered how much information does a type signature convey or if we can learn anything significant about a function just by knowing its type?
+                                It turns out that, with just a bit of theory, we can learn a lot!
+                              </div>
+                              <div>
+                                Relational semantics is a simple and comprehensible model for interpreting types.
+                              </div>
+                              <div>
+                                By using its basic tools we will easily find interesting facts that will not only help us understand functional programs better,
+                                but can also be useful in designing many real-life algorithms and applications.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#kostrzewa"><strong><i class="fa fa-user"></i>Marcin Kostrzewa</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <a href="http://joind.in/13670"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="genericPolymorphismOnSteroids">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/claudio-sacerdoti-coen.jpg" class="img-responsive img-circle" alt="Claudio Sacerdoti Coen" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">14:00 - 14:45</i></div>
+                          <a class="collapsed" href="#genericPolymorphismOnSteroidsDetails" data-toggle="collapse">
+                            Generic polymorphism on steroids
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="genericPolymorphismOnSteroidsDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                            <div>Generic polymorphism allows to call the very same code on data structures that store data belonging to different types. Type inference allows to write code without declaring the type of functions: the compiler discovers by itself the most generic type of a polymorphic function.</div>
+                            <div>New data types, however, still need to be declared beforehand. Can we push these mechanisms to let the compiler infer by itself the shape of data structures, completely removing the need for declaration of data types?</div>
+                            <div>I will present how the OCaml language stretches the limits of type inference and generic polymorphism with polymorphic variant and the dual notion of extensible records. The former concisely solve, among others and with more guarantees, the expression problem often used to justify the supremacy of OOP. The latter provide persistent objects with user controlled late binding and a very flexible type system that is not based on subtyping and does not require dynamic casts.</div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#sacerdoti"><strong><i class="fa fa-user"></i>Claudio Sacerdoti Coen</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>OCaml</strong></div>
+                              <a href="http://joind.in/13671"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="embracingClojureAJourneyIntoClojureAdoption">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/luca-grulla.jpg" class="img-responsive img-circle" alt="Luca Grulla" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">15:00 - 15:45</i></div>
+                          <a class="collapsed" href="#embracingClojureAJourneyIntoClojureAdoptionDetails" data-toggle="collapse">
+                            Embracing Clojure: a journey into Clojure adoption
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="embracingClojureAJourneyIntoClojureAdoptionDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                What happens when a small team of very experienced developers with no real functional programming experience decides to use Clojure to run a core system architecture component?
+                              </div>
+                              <div>
+                                In this talk I’ll walk you through the 2 years journey of my team with Clojure, sharing learnings, epiphanies, success as well as some of the challenges we encountered.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#grulla"><strong><i class="fa fa-user"></i>Luca Grulla</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Clojure</strong></div>
+                              <a href="http://joind.in/13672"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="functionCompositionForEverything">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/andrea-ferretti.jpg" class="img-responsive img-circle" alt="Andrea Ferretti" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o">16:15 - 17:00</i></div>
+                          <a class="collapsed" href="#functionCompositionForEverythingDetails" data-toggle="collapse">
+                            Function composition for everything
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="functionCompositionForEverythingDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <ul>
+                                <li>
+                                  How can we structure programs around function composition
+                                </li>
+                                <li>
+                                  Examples of simple programs in Factor
+                                </li>
+                                <li>
+                                  How the lack of syntax facilitates metaprogramming
+                                </li>
+                                <li>
+                                  Time for questions or more examples
+                                </li>
+                              </ul>
+                              <div>
+                                Everything will be done in an interactive session, so that people can follow in their laptops: Factor is concise enough that this should actually be practical.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#ferretti"><strong><i class="fa fa-user"></i>Andrea Ferretti</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Factor</strong></div>
+                              <a href="http://joind.in/13673"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="tab-pane fade outer-tab-pane" id="workshops">
+            <div class="tab-pane fade workshops-tab-pane" id="workshops">
               <div class="tab-content">
-                <div class="tab-pane fade in active" id="workshopsOnlytrack">
-                  <article>
-                    <p>No schedule yet</p>
-                  </article>
+                <div class="tab-pane fade in active" id="workshopsOnlyTrack">
+                  <div class="panel-group timeline-schedule">
+                    <div class="panel panel-default" id="anIntroductionToErlangOtp">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/simon-zelazny.jpg" class="img-responsive img-circle" alt="Simon Zelazny" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o"></i>11:00 - 12:45</div>
+                          <a class="collapsed" href="#anIntroductionToErlangOtpDetails" data-toggle="collapse">
+                            An introduction to Erlang/OTP
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="anIntroductionToErlangOtpDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                <h8>Description</h8>
+                              </div>
+                              <div>
+                                Hands-on workshop for developers with no prior experience in Erlang, which aims at building a simple client-server architecture using Erlang/OTP and real tools like telnet, curl, rebar and relx.
+                              </div>
+                              <br/>
+                              <div>
+                                <h8>Prerequisites</h8>
+                              </div>
+                              <div>
+                                Participants may want to install Erlang/OTP runtime before attending the workshop so that they can implement exercise themselves.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#zelazny"><strong><i class="fa fa-user"></i>Simon Zelazny</strong></a>
+                              <div><strong><i class="fa fa-star-o"></i>Beginner</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Erlang</strong></div>
+                              <a href="http://joind.in/13674"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default" id="webAppsInClojure">
+                      <div class="speaker-wrapper">
+                        <img src="assets/images/speakers/jan-stępień.jpg" class="img-responsive img-circle" alt="Jan Stępień" />
+                      </div>
+                      <div class="panel-heading">
+                        <div class="panel-title">
+                          <div class="time"><i class="fa fa-clock-o"></i>14:00 - 15:45</div>
+                          <a class="collapsed" href="#webAppsInClojureDetails" data-toggle="collapse">
+                            Web apps in Clojure
+                            <div class="pull-right fa fa-angle-up collapse-angle"></div>
+                            <div class="pull-right fa fa-angle-down collapse-angle"></div>
+                          </a>
+                        </div>
+                      </div>
+                      <div id="webAppsInClojureDetails" class="panel-collapse collapse">
+                        <div class="panel-body">
+                          <article>
+                            <p class="session-description">
+                              <div>
+                                <h8>Description</h8>
+                              </div>
+                              <div>
+                                In this workshop we will demonstrate how easy it is to use Clojure to build modern web applications, including REPL-driven development, templating and state management.
+                                We'll also show how to package and run the application in a standalone way.
+                              </div>
+                              <br/>
+                              <div>
+                                <h8>Prerequisites</h8>
+                              </div>
+                              <div>
+                                This workshop is not an entry level one: we expect the audience to be familiar with the basics of Clojure and to have a Clojure environment installed,
+                                with the ability to connect the editor to a Clojure REPL session.
+                                We will provide participants with a pre-workshop to-do list.
+                              </div>
+                            </p>
+                            <div class="session-info">
+                              <a class="speaker-link" href="#speakers" data-speaker-id="#stepien"><strong><i class="fa fa-user"></i>Jan Stępień</strong></a>
+                              <div><strong><i class="fa fa-star-half-o"></i>Intermediate</strong></div>
+                              <div><strong><i class="fa fa-code"></i>Clojure</strong></div>
+                              <a href="http://joind.in/13675"><strong><i class="evtsiteico joindin"></i>Leave your feedback</strong></a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-        <!--
         <div class="btn-wrapper">
-          <a href="#" class="btn btn-xs"><span class="icon icon-filetypes-11 icon-active"></span> <span class="btn-txt">Download schedule</span></a>
+          <a class="btn btn-xs" href="assets/images/schedule.pdf" target="_blank">
+            <span class="icon icon-filetypes-11"></span>
+            <span class="btn-txt">Download schedule</span>
+          </a>
         </div>
-        -->
       </div>
     </section>
 
     <section id="speakers" class="section light carousel slide" data-ride="carousel" data-interval="false">
       <div class="overlay"></div>
-
       <div class="container">
         <div class="icon-wrap"><span class="icon icon-active icon-multimedia-12"></span></div>
         <h3>Speakers</h3>
@@ -853,9 +1660,9 @@
           <div class="carousel">
             <div class="flexslider">
               <ul class="slides">
-                <li>
+                <li id="milewski">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/bartosz-milewski.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/bartosz-milewski.jpg" class="img-responsive img-circle" alt="speaker Bartosz Milewski" />
                   </div>
                   <div class="name">Bartosz Milewski</div>
                   <div class="sub">CEO - <a href="http://relisoft.com">Reliable Software</a></div>
@@ -871,25 +1678,85 @@
                     <a href="http://bartoszmilewski.com"><span class="fa fa-globe"></span></a>
                   </div>
                 </li>
-                <li>
+                <li id="adam">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/jan-stępień.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/quentin-adam.jpg" class="img-responsive img-circle" alt="speaker Quentin Adam" />
                   </div>
-                  <div class="name">Jan Stępień</div>
-                  <div class="sub">Developer - <a href="http://www.stylefruits.de">Stylefruits</a></div>
+                  <div class="name">Quentin Adam</div>
+                  <div class="sub">CEO - <a href="http://clever-cloud.com">Clever Cloud</a></div>
                   <p class="small">
-                    Jan is a backend developer at stylefruits GmbH. He runs half marathons and likes to wander in snowy Alpine wilderness.
-                    <br />
-                    He got a M. Eng. in CS at Warsaw University of Technology and he is easily confused by the assignment operator
+                    Quentin is a web fan entrepreneur who works on innovative technologies, cloud computing, and social interactions.
+                    He comes from the tech part of the web, but now has some marketing, commercial and strategies skills
                   </p>
                   <div class="social-link">
-                    <a href="http://twitter.com/janstepien"><span class="fa fa-twitter"></span></a>
-                    <a href="http://www.linkedin.com/in/janstepien"><span class="fa fa-linkedin"></span></a>
+                    <a href="http://twitter.com/waxzce"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/waxzce"><span class="fa fa-linkedin"></span></a>
                   </div>
                 </li>
-                <li>
+                <li id="alekseichenko">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/yan-cui.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/vladimir-alekseichenko.jpg" class="img-responsive img-circle" alt="speaker Vladimir Alekseichenko" />
+                  </div>
+                  <div class="name">Vladimir Alekseichenko</div>
+                  <div class="sub">Data scientist - <a href="http://getbase.com">Base CRM</a></div>
+                  <p class="small">
+                    Vladimir is enthusiast and is learning to live and love this life everyday. Currently he focus on data: he tries to infer insights from data.
+                    Vladimir believes that functional programming and big data will be hot topics in the near future.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/slon1024"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/vladimiralekseichenko"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="aloi">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/roberto-aloi.jpg" class="img-responsive img-circle" alt="speaker Roberto Aloi" />
+                  </div>
+                  <div class="name">Roberto Aloi</div>
+                  <div class="sub">Software engineer - <a href="http://www.erlang-solutions.com">Erlang Solutions</a></div>
+                  <p class="small">
+                    M.Sc in Computer Engineering and Erlang passionate, Roberto has been working with Erlang technologies since 2007.
+                    Sicilian of origin, he is now based in Stockholm where he works as a senior consultant and trainer
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/robertoaloi"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/robertoaloi"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="borek">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/tomek-borek.jpg" class="img-responsive img-circle" alt="speaker Tomek Borek" />
+                  </div>
+                  <div class="name">Tomek Borek</div>
+                  <div class="sub">IAAS Engineer - <a href="http://www.lumesse.com">Lumesse</a></div>
+                  <p class="small">
+                    Tomek works in the core architecture team, a SAAS solution for recruitment.
+                    <br />
+                    He co-leads SCKRK, Polish JUG, GeeCON and Lambda Lounge Kraków, where he tries to learn FP (results vary, but he tries).
+                    He believes in feedback, so tell him what you (dis)liked!
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/LAFK_pl"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/tjborek"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="busoli">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/simone-busoli.jpg" class="img-responsive img-circle" alt="speaker Simone Busoli" />
+                  </div>
+                  <div class="name">Simone Busoli</div>
+                  <div class="sub">Freelance software engineer</div>
+                  <p class="small">
+                    Simone is a software engineer with a passion for programming languages and in general anything that makes a developer's job easier, fun and more productive
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/simonebu"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/simonebusoli"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="cui">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/yan-cui.jpg" class="img-responsive img-circle" alt="speaker Yan Cui" />
                   </div>
                   <div class="name">Yan Cui</div>
                   <div class="sub">Senior developer - <a href="http://www.gamesyscorporate.com">GameSys</a></div>
@@ -903,9 +1770,114 @@
                     <a href="http://www.linkedin.com/in/theburningmonk"><span class="fa fa-linkedin"></span></a>
                   </div>
                 </li>
-                <li>
+                <li id="delafargue">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/marek-kubica.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/clément-delafargue.jpg" class="img-responsive img-circle" alt="speaker Clément Delafargue" />
+                  </div>
+                  <div class="name">Clément Delafargue</div>
+                  <div class="sub">Developer - <a href="http://clever-cloud.com">Clever Cloud</a></div>
+                  <p class="small">
+                    Clément is a programmer currently working for a Europe-based PaaS company.
+                    He is particularly interested in practicing and teaching Functional Programming
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/clementd"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/cdelafargue"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="dinapoli">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/alfredo-di-napoli.jpg" class="img-responsive img-circle" alt="speaker Alfredo Di Napoli" />
+                  </div>
+                  <div class="name">Alfredo Di Napoli</div>
+                  <div class="sub">Developer - <a href="http://www.irisconnect.co.uk">IRIS Connect</a></div>
+                  <p class="small">
+                    Alfredo is an enthusiastic programmer who tries to find the most elegant solution for the problem at hand.
+                    <br />
+                    He likes to define himself a beauty-driven developer. Robert C. Martin's Clean Code is his bible, functional languages his inspiration
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/alfredodinapoli"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/alfredodn"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="feroldi">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/federico-feroldi.jpg" class="img-responsive img-circle" alt="speaker Federico Feroldi" />
+                  </div>
+                  <div class="name">Federico Feroldi</div>
+                  <div class="sub">CTO - <a href="http://measurence.com">Measurence Inc.</a></div>
+                  <p class="small">
+                    Federico founded Measurence, Coderloop and Cloudify. He hacked at Gilt Groupe, Yahoo and Vodafone and lived in 5 cities, 3 countries and 2 continents
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/cloudify"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/feroldi"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="ferretti">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/andrea-ferretti.jpg" class="img-responsive img-circle" alt="speaker Andrea Ferretti" />
+                  </div>
+                  <div class="name">Andrea Ferretti</div>
+                  <div class="sub">R&amp;D developer - <a href="http://www.unicredit.it">UniCredit</a></div>
+                  <p class="small">
+                    Andrea is a mathematician turned to programming, who found his sweet spot in the R&amp;D group of UniCredit.
+                    There, he can be found proposing yet another programming language or trying to implement some more or less obscure paper.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/AndreaFerrett20"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/ferrettiandrea"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="finelli">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/michele-finelli.jpg" class="img-responsive img-circle" alt="speaker Michele Finelli" />
+                  </div>
+                  <div class="name">Michele Finelli</div>
+                  <div class="sub">VP - <a href="http://www.biodec.com/">BioDec</a></div>
+                  <p class="small">
+                    Michele has been a computer network and computer system security consultant for companies and research institution since 1996.
+                    Server shepherd and dungeon master, he is also author of papers on bio-informatics and chaos theory.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/gaunilone"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/mfinelli"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="grulla">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/luca-grulla.jpg" class="img-responsive img-circle" alt="speaker Luca Grulla" />
+                  </div>
+                  <div class="name">Luca Grulla</div>
+                  <div class="sub">Lead developer - <a href="http://www.uswitch.com">uSwitch</a></div>
+                  <p class="small">
+                    Luca is a software engineer currently working in London. After more than a decade spent building systems with OO languages,
+                    in 2011 he had an epiphany and started using Clojure: he hasn't stopped since then
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/lucagrulla"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/lucagrulla"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="kostrzewa">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/marcin-kostrzewa.jpg" class="img-responsive img-circle" alt="speaker Marcin Kostrzewa" />
+                  </div>
+                  <div class="name">Marcin Kostrzewa</div>
+                  <div class="sub">Software developer - <a href="http://www.lunarlogic.io">Lunar Logic</a></div>
+                  <p class="small">
+                    Marcin is a software developer and theoretical computer science student at Jagiellonian University.
+                    He's passionate about maths, trying to find its interesting applications in real-life problems and share them with others
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/mmkostrzewa"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/marcinkostrzewa"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="kubica">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/marek-kubica.jpg" class="img-responsive img-circle" alt="speaker Marek Kubica" />
                   </div>
                   <div class="name">Marek Kubica</div>
                   <div class="sub">Student - <a href="http://www.tum.de">TU München</a></div>
@@ -919,36 +1891,174 @@
                     <a href="http://www.linkedin.com/in/mkubica"><span class="fa fa-linkedin"></span></a>
                   </div>
                 </li>
-                <li>
+                <li id="leopardi">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/alfredo-di-napoli.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/andrea-leopardi.jpg" class="img-responsive img-circle" alt="speaker Andrea Leopardi" />
                   </div>
-                  <div class="name">Alfredo Di Napoli</div>
-                  <div class="sub">Developer - <a href="http://www.irisconnect.co.uk">IRIS Connect</a></div>
+                  <div class="name">Andrea Leopardi</div>
+                  <div class="sub">Backend web developer</div>
                   <p class="small">
-                    Alfredo is an enthusiastic programmer who tries to find the most elegant solution for the problem at hand.
-                    <br />
-                    He likes to define himself a beauty-driven developer. Robert C. Martin's Clean Code is his bible, functional languages his inspiration.
+                    Andrea is a language enthusiast with an obsession for clean and beautiful code. He loves learning new technologies and being an early adopter.
+                    He strongly believes in accessible culture and education and in open-source software
                   </p>
                   <div class="social-link">
-                    <a href="http://twitter.com/alfredodinapoli"><span class="fa fa-twitter"></span></a>
-                    <a href="http://www.linkedin.com/in/alfredodn"><span class="fa fa-linkedin"></span></a>
+                    <a href="http://twitter.com/whatyouhide"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/anleopardi"><span class="fa fa-linkedin"></span></a>
                   </div>
                 </li>
-                <li>
+                <li id="nash">
                   <div class="img-wrapper">
-                    <img src="assets/images/speakers/tomek-borek.jpg" class="img-responsive img-circle" alt="speaker-1" />
+                    <img src="assets/images/speakers/joe-nash.jpg" class="img-responsive img-circle" alt="speaker Joe Nash" />
                   </div>
-                  <div class="name">Tomek Borek</div>
-                  <div class="sub">IAAS Engineer - <a href="http://www.lumesse.com">Lumesse</a></div>
+                  <div class="name">Joe Nash</div>
+                  <div class="sub">Developer Advocate - <a href="http://www.braintreepayments.com">Braintree</a></div>
                   <p class="small">
-                    Tomek works in the core architecture team, a SAAS solution for recruitment.
-                    <br />
-                    He co-leads SCKRK, Polish JUG, GeeCON and Lambda Lounge Kraków, where he tries to learn FP (results vary, but he tries). He believes in feedback, so tell him what you (dis)liked!
+                    Having learnt the dark arts of FP at the University of Nottingham, Joe is undergoing a PhD in
+                    parallel and heterogeneous systems at the University of St Andrews.
+                    He believes in the educational benefits of hackathons and hack culture
                   </p>
                   <div class="social-link">
-                    <a href="http://twitter.com/LAFK_pl"><span class="fa fa-twitter"></span></a>
-                    <a href="http://www.linkedin.com/in/tjborek"><span class="fa fa-linkedin"></span></a>
+                    <a href="http://twitter.com/jna_sh"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/joednash"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="newton">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/michael-newton.jpg" class="img-responsive img-circle" alt="speaker Michael Newton" />
+                  </div>
+                  <div class="name">Michael Newton</div>
+                  <div class="sub">Technical architect - <a href="http://15below.com">15below LTD</a></div>
+                  <p class="small">
+                    Michael is the technical architect at a Brighton UK based travel software solutions company and a founding member of the F# Foundation.
+                    He is responsible for developer training at his company and the maintainer of some F# open source projects.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/mavnn"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/mavnn"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="sacerdoti">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/claudio-sacerdoti-coen.jpg" class="img-responsive img-circle" alt="speaker Claudio Sacerdoti Coen" />
+                  </div>
+                  <div class="name">Claudio Sacerdoti Coen</div>
+                  <div class="sub">Associate professor - <a href="http://www.cse.unibo.it">DISI Bologna</a></div>
+                  <p class="small">
+                    Claudio is the author of several papers in journals and proceedings of international conferences.
+                    His research topics are Mathematical Knowledge Management and Interactive Theorem Proving.
+                    He was a member of several European research projects
+                  </p>
+                  <div class="social-link">
+                    <a href="https://twitter.com"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="paolini">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/mahesh-paolini-subramanya.jpg" class="img-responsive img-circle" alt="speaker Mahesh Paolini-Subramanya" />
+                  </div>
+                  <div class="name">M. Paolini-Subramanya</div>
+                  <div class="sub">V.P. R&amp;D - <a href="http://ubnt.com">Ubiquiti Networks</a></div>
+                  <p class="small">
+                    Mahesh have been involved in "Internet Stuff" since Day Zero (remember Gopher?) and is currently building out
+                    the Erlang based infrastructure for all of Ubiquiti's cloud services.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/dieswaytoofast"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/dieswaytoofast"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="percoco">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/flavio-percoco.jpg" class="img-responsive img-circle" alt="speaker Flavio Percoco" />
+                  </div>
+                  <div class="name">Flavio Percoco</div>
+                  <div class="sub">Senior software engineer - <a href="http://www.redhat.com">Red Hat</a></div>
+                  <p class="small">
+                    Flavio spends most of his time hacking on storage and messaging modules. He actively contributes to open-source projects:
+                    he belongs to the MongoDB Masters group, is a contributor of Rust lang and was an active member of Gnome's a11y team
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/flaper87"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/fpercoco"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="sasso">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/roberto-sasso.jpg" class="img-responsive img-circle" alt="speaker Roberto Sasso" />
+                  </div>
+                  <div class="name">Roberto Sasso</div>
+                  <div class="sub">Software architect - <a href="http://www.yoox.com">YOOX</a></div>
+                  <p class="small">
+                    Roberto spent most of his life studying computer science and he is currently working in highly complex environments with enterprise technologies.
+                    He started practicing FP about 5 years ago and nowadays he is working professionally in Scala.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/robertosasso84"><span class="fa fa-twitter"></span></a>
+                    <a href="http://linkedin.com/in/robertosasso"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="stepien">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/jan-stępień.jpg" class="img-responsive img-circle" alt="speaker Jan Stępień" />
+                  </div>
+                  <div class="name">Jan Stępień</div>
+                  <div class="sub">Developer - <a href="http://www.stylefruits.de">Stylefruits</a></div>
+                  <p class="small">
+                    Jan is a backend developer at stylefruits GmbH. He runs half marathons and likes to wander in snowy Alpine wilderness.
+                    <br />
+                    He got a M. Eng. in CS at Warsaw University of Technology and he is easily confused by the assignment operator
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/janstepien"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/janstepien"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="terrell">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/riccardo-terrell.jpg" class="img-responsive img-circle" alt="speaker Riccardo Terrell" />
+                  </div>
+                  <div class="name">Riccardo Terrell</div>
+                  <div class="sub">Software architect - <a href="http://www.microsoft.com">Microsoft</a></div>
+                  <p class="small">
+                    Riccardo is a functional guy living in an imperative world.
+                    Active in the F# community and founder of the DC F# user group,
+                    he is a believer in polyglot programming as a mechanism in finding the right tool for the job.
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/trikace"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/riterrell/"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="videla">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/alvaro-videla.jpg" class="img-responsive img-circle" alt="speaker Alvaro Videla" />
+                  </div>
+                  <div class="name">Alvaro Videla</div>
+                  <div class="sub">Developer advocate - <a href="http://www.pivotal.io/">Pivotal</a></div>
+                  <p class="small">
+                    Alvaro works as developer advocate for RabbitMQ. He used to work in Shanghai building
+                    one of Germany biggest dating websites and he co-authored &quot;RabbitMQ in Action&quot;
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/old_sound"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/alvarovidela"><span class="fa fa-linkedin"></span></a>
+                  </div>
+                </li>
+                <li id="zelazny">
+                  <div class="img-wrapper">
+                    <img src="assets/images/speakers/simon-zelazny.jpg" class="img-responsive img-circle" alt="speaker Simon Zelazny" />
+                  </div>
+                  <div class="name">Simon Zelazny</div>
+                  <div class="sub">Developer - <a href="http://www.erlang-solutions.com">Erlang Solutions</a></div>
+                  <p class="small">
+                    Reading SICP made Simon flip-flop from natural to programming languages.
+                    He loves to think about how the two domains interact and influence one another.
+                    His daily, unglamorous back-end work is made lighter by the wonders of FP
+                  </p>
+                  <div class="social-link">
+                    <a href="http://twitter.com/simonzelazny"><span class="fa fa-twitter"></span></a>
+                    <a href="http://www.linkedin.com/in/simonzelazny"><span class="fa fa-linkedin"></span></a>
                   </div>
                 </li>
               </ul>
@@ -972,39 +2082,89 @@
         <br/>
         <div class="row">
           <ul class="list-inline">
-            <li>
+            <li class="sponsor diamond">
               <a href="http://www.coderstug.org" target="_blank">
                 <img src="assets/images/sponsors/coders-tug.png" title="Coders TUG" alt="Coders TUG" />
               </a>
             </li>
-            <li>
-              <a href="http://fpdays.net/2014/" target="_blank">
-                <img src="assets/images/sponsors/fp-days.png" title="FP Days" alt="FP Days" />
+            <li class="sponsor ruby">
+              <a href="http://www.avanscoperta.it" target="_blank">
+                <img src="assets/images/sponsors/avanscoperta.png" title="Avanscoperta" alt="Avanscoperta" />
               </a>
             </li>
-            <li>
-              <a href="http://www.t3lab.it" target="_blank">
-                <img src="assets/images/sponsors/t3-lab.png" title="T3LAB | Technology Transfer Team" alt="T3LAB | Technology Transfer Team" />
+            <li class="sponsor emerald">
+              <a href="http://www.codiceplastico.com" target="_blank">
+                <img src="assets/images/sponsors/codice-plastico.png" title="CodicePlastico" alt="CodicePlastico" />
               </a>
             </li>
-            <li>
+            <li class="sponsor emerald">
               <a href="http://www.biodec.com" target="_blank">
                 <img src="assets/images/sponsors/biodec.png" title="BioDec" alt="BioDec" />
               </a>
             </li>
-            <li>
-              <a href="http://www.cosenonjaviste.it" target="_blank">
-                <img src="assets/images/sponsors/cose-non-javiste.png" title="Cose Non Javiste" alt="Cose Non Javiste" />
+            <li class="sponsor emerald">
+              <a href="http://www.coders51.com" target="_blank">
+                <img src="assets/images/sponsors/coders51.png" title="coders51" alt="coders51" />
               </a>
             </li>
-            <li>
+            <li class="sponsor emerald">
+              <a href="http://www.genesy.it" target="_blank">
+                <img src="assets/images/sponsors/genesy.png" title="Genesy" alt="Genesy" />
+              </a>
+            </li>
+            <li class="sponsor emerald">
+              <a href="http://www.gruppometa.it" target="_blank">
+                <img src="assets/images/sponsors/gruppometa.png" title="GruppoMeta" alt="GruppoMeta" />
+              </a>
+            </li>
+            <li class="sponsor emerald">
+              <a href="http://www.3logic.it" target="_blank">
+                <img src="assets/images/sponsors/3logic.png" title="3logic" alt="3logic" />
+              </a>
+            </li>
+            <li class="sponsor emerald">
+              <a href="http://www.cloudesire.com" target="_blank">
+                <img src="assets/images/sponsors/cloudesire.png" title="ClouDesure" alt="ClouDesure" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="http://www.t3lab.it" target="_blank">
+                <img src="assets/images/sponsors/t3-lab.png" title="T3LAB | Technology Transfer Team" alt="T3LAB | Technology Transfer Team" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="http://fpdays.net/2014" target="_blank">
+                <img src="assets/images/sponsors/fp-days.png" title="FP Days" alt="FP Days" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="http://www.lambdadays.org" target="_blank">
+                <img src="assets/images/sponsors/lambda-days.png" title="Lambda Days" alt="Lambda Days" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
               <a href="http://www.meetup.com/Lambda-Lounge-Krakow" target="_blank">
                 <img src="assets/images/sponsors/lambda-lounge-kraków.png" title="Lambda Lounge Kraków" alt="Lambda Lounge Kraków" />
               </a>
             </li>
-            <li>
-              <a href="http://www.lambdadays.org" target="_blank">
-                <img src="assets/images/sponsors/lambda-days.png" title="Lambda Days" alt="Lambda Days" />
+            <li class="sponsor sapphire">
+              <a href="http://www.cosenonjaviste.it" target="_blank">
+                <img src="assets/images/sponsors/cose-non-javiste.png" title="Cose Non Javiste" alt="Cose Non Javiste" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="http://www.italiancpp.org" target="_blank">
+                <img src="assets/images/sponsors/italiancpp.png" title="Italian C++" alt="Italian C++" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="https://www.facebook.com/GrUSP" target="_blank">
+                <img src="assets/images/sponsors/grusp.png" title="GrUSP" alt="GrUSP" />
+              </a>
+            </li>
+            <li class="sponsor sapphire">
+              <a href="http://www.tabulatouch.eu" target="_blank">
+                <img src="assets/images/sponsors/tabula.png" title="tabula" alt="tabula" />
               </a>
             </li>
           </ul>
@@ -1145,6 +2305,56 @@
       </div>
     </section>
 
+    <section id="map" class="dark">
+      <div id="canvas-map"></div>
+      <div class="container col-md-offset-1 col-lg-6 col-md-8 col-sm-10 col-xs-12">
+        <div class="animated hiding location row" data-animation="fadeInLeft" data-delay="0">
+          <h3>Location</h3>
+          <ul>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-building highlight"></i></span>
+                <span class="col-xs-11">Department of Computer Science and Engineering (DISI)</span>
+            </li>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-map-marker highlight"></i></span>
+                <span class="col-xs-11">Viale del Risorgimento, 2 - 40136 Bologna</span>
+            </li>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-plane highlight"></i></span>
+                <span class="col-xs-11">
+                    Take a plane to the Guglielmo Marconi Airport (BLQ) and you will be just a
+                    <a href="http://www.tper.it/content/linea-blq-aeroporto-stazione-centrale" target="_blank">bus ride</a>
+                    away from Bologna central railway station
+                </span>
+            </li>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-train highlight"></i></span>
+                <span class="col-xs-11">
+                    Take a <a href="http://www.lefrecce.it/B2CWeb/search.do?parameter=searchOutputViewer" target="_blank">Trenitalia train</a>
+                    to Bologna Centrale or an <a href="http://www.italotreno.it/EN" target="_blank">Italo train</a> to Bologna and you will be
+                    at Bologna central railway station, just a bus ride away from the conference
+                </span>
+            </li>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-bus highlight"></i></span>
+                <span class="col-xs-11">
+                    Take <a href="http://www.tper.it/content/linea-33-circolare-esterna-sinistra" target="_blank">bus route 33</a>
+                    at the Bologna central railway station, get off at the &quot;Liceo Righi&quot; stop and you will be just a
+                    <a href="http://goo.gl/maps/GijNW" target="_blank">short walk away</a> from the conference
+                </span>
+            </li>
+            <li class="row">
+                <span class="col-xs-1"><i class="fa fa-car highlight"></i></span>
+                <span class="col-xs-11">
+                    Take the A1 (west)/A13 (north east)/A14 (sout east) highway<br />
+                    You can park near DISI paying 1.20 &euro; a hour or 6.00 &euro; for the whole day
+                </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <footer id="footer"></footer>
 
     <!--[if lt IE 9]>
@@ -1153,6 +2363,7 @@
     <!--[if (gte IE 9) | (!IE)]><!-->
       <script type="text/javascript" src="assets/js/jquery-2.1.0.min.js?ver=1"></script>
     <!--<![endif]-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
     <script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
     <script type="text/javascript" src="assets/js/jquery.validate.js"></script>
