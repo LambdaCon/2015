@@ -1,0 +1,745 @@
+\documentclass{beamer}
+
+\mode<presentation>
+{
+  \usetheme{Montpellier}
+  \usecolortheme[light]{solarized}
+
+  % or ...
+
+  \setbeamercovered{transparent}
+  % or whatever (possibly just delete it)
+}
+
+\usepackage[T1]{fontenc}
+\usepackage{url}
+\usepackage{ucs}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, italian]{babel}
+\setcounter{secnumdepth}{2}
+\usepackage{eurosym}
+\usepackage{graphics}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{marginnote}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\sisetup{group-separator = {.}}
+\sisetup{group-minimum-digits = 4}
+\sisetup{output-decimal-marker={,}}
+\usepackage{lettrine}
+\usepackage{ulem}
+\usepackage{microtype}
+\usepackage{alltt}
+\usepackage{wrapfig}
+\usepackage{listings}
+\lstset{% general command to set parameter(s)
+    basicstyle=\tiny, % print whole listing small
+    keywordstyle=\color{black}\bfseries\underbar, % underlined bold black keywords
+    identifierstyle=,% nothing happens
+    commentstyle=\color{white}, % white comments
+    stringstyle=\ttfamily,% typewriter type for strings
+    showstringspaces=false}% no special string spaces
+
+\usepackage{mathpazo}
+%\usepackage[scaled=.95]{helvet}
+\usepackage{palatino}
+\usepackage{courier}
+
+\usepackage{soul}
+\usepackage[italian]{varioref}
+\usepackage{hyperref}
+\hypersetup{%
+    colorlinks  = true,
+    linktoc     = all,
+    unicode     = true,
+    citecolor   = royalpurple,
+    linkcolor   = blue,
+    urlcolor    = red,
+}
+
+\title[Type theory] % (optional, use only with long paper titles)
+{ It's the type theory baby! }
+
+\subtitle{A gentle introduction to type theory (well, not so gentle
+\dots)}
+
+\author[Michele Finelli] % (optional, use only with lots of authors)
+{Michele Finelli\\
+m@biodec.com\\
+BioDec}
+% - Use the \inst command only if there are several affiliations.
+% - Keep it simple, no one is interested in your street address.
+
+\date{}
+
+\subject{Talks}
+% This is only inserted into the PDF information catalog. Can be left
+% out. 
+
+% If you have a file called "university-logo-filename.xxx", where xxx
+% is a graphic format that can be processed by latex or pdflatex,
+% resp., then you can add a logo as follows:
+
+\pgfdeclareimage[height=0.5cm]{university-logo}{biodec_rosso}
+\logo{\pgfuseimage{university-logo}}
+
+% Delete this, if you do not want the table of contents to pop up at
+% the beginning of each subsection:
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Index}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+\AtBeginSubsection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Index}
+    \tableofcontents[currentsection,currentsubsection]
+  \end{frame}
+}
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+%\beamerdefaultoverlayspecification{<+->}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Index}
+  \tableofcontents
+  % You might wish to add the option [pausesections]
+\end{frame}
+
+\section{What is a type ?} % (fold)
+\label{sec:What is a type ?}
+
+\begin{frame}
+
+    \frametitle{This is a talk about types}
+
+    So \dots what is a type in programming languages ?
+
+    \begin{enumerate}
+    
+        \uncover <2->{\item A type is a \textbf{property}.}
+        
+        \uncover <3->{\item A type is \textbf{assigned to a term}.}
+        
+        \uncover <4->{\item So a type determines that a term
+            (\textit{i.e.} a ``program fragment'') has a well defined
+        \textbf{meaning}.}
+    
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{What do we mean by ``meaning'' ?}
+
+    So \dots which are the \textbf{acceptable meanings} of a program
+    fragment ? Which of the following is an \textbf{acceptable property} ?
+
+    \begin{enumerate}
+    
+        \uncover <2->{\item Is it being an IEEE 754-2008 float ?}
+        
+        \uncover <3->{\item Is the assurance that a given memory
+            location will not be changed ?}
+        
+        \uncover <4->{\item Is the statement that a given programming
+            structure has a certain size ?}
+        
+        \uncover <5->{\item What about this ? --- N are the natural
+                numbers, Perm is a permutation.
+            \begin{align*}
+                \forall n, \forall f: N \rightarrow N, \exists \pi \in \mbox{Perm}, \forall 1 \leq i,j \leq n & \\
+                i \leq j \implies f(\pi(i)) \leq f(\pi(j)) & 
+            \end{align*}
+            }
+    
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Meaningful answers}
+
+    \begin{enumerate}
+    
+        \uncover <2->{\item Is being an IEEE 754-2008 float a
+            \textbf{property} ?} 
+            \uncover <3->{\textbf{Yes}. It is a typical variable typing
+            judgement.}
+        
+        \uncover <4->{\item Is the assurance that a given memory
+            location will not be changed, a \textbf{property} ?}
+            \uncover <4->{\textbf{Yes}. It is a safety property (not so easy to
+            express).}
+        
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Meaningful answers}
+
+    \begin{enumerate} \setcounter{enumi}{2}
+        
+        \uncover <2->{\item Is the statement that a given programming
+            structure has a certain size, a \textbf{property} ?} 
+            \uncover <3->{\textbf{Yes}. It could be a dependent type judgement,
+            for example.}
+        
+        \uncover <4->{\item What about this ? --- N are the natural
+                numbers, Perm is a permutation.
+            \begin{align*}
+                \forall n, \forall f: N \rightarrow N, \exists \pi \in \mbox{Perm}, \forall 1 \leq i,j \leq n & \\
+                i \leq j \implies f(\pi(i)) \leq f(\pi(j)) & 
+            \end{align*}
+            }
+
+            \uncover <5->{\textbf{Yes again}. It states that there is an
+            algorithm that sorts the natural numbers.}
+        
+    \end{enumerate}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{A property is a logical formula}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item A type judgement about a program fragment is
+            \textit{simply} a \textbf{logical formula} that is satisfied
+            by that program.}
+    
+        \uncover <3->{\item But a program does not ``stand still'' \dots
+            it \textit{runs}, it \textit{gets executed}: a formula
+            \textit{au contraire} is \textbf{always} true or false, how do
+            we reconcile this \textbf{static versus dynamic} conundrum ?}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Formulas are eternal !}
+
+    \begin{itemize}
+ 
+        \uncover <2->{\item Since the \textbf{provability} of a logical
+                formula does not change with time, we must assume that
+                also the meaning of the fragment of code is
+                \textbf{absolutely determined} and that it does not
+            depend on being executed.} 
+            
+        \uncover <3->{\item \textbf{Execution} is just the reduction of
+            the code to something simpler but equivalent: the
+            \textbf{result of the computation}.}
+
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types is a powerful notion}
+
+    Providing a type to a term subsumes some properties of the code
+    fragment to which the type is attached:
+
+    \begin{itemize}
+    
+        \uncover <2->{\item the code must be \textit{pure},
+            \textit{i.e.} without \textbf{side effects} since the
+        meaning of the code can not depend on something external to the
+        program;}
+    
+        \uncover <3->{\item since the formula is completely determined
+                by its variables, we have a notion of
+            \textbf{functionality} of the related code;}
+    
+        \uncover <4->{\item we have a notion of \textbf{immutability}.}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Sounds familiar ?}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item Purity, or ``no side effects'' ?} 
+    
+        \uncover <3->{\item Functions as the building blocks.}
+    
+        \uncover <4->{\item Immutable values.}
+    
+    \end{itemize}
+
+    \uncover <5->{\Large Yes ! I am talking about \textbf{functional
+    programming} !}
+
+\end{frame}
+
+% section What is a type ? (end)
+
+\section{Short history of type theory} % (fold)
+\label{sec:Short history of type theory}
+
+\begin{frame}
+
+    \frametitle{Or, how we got the \textit{propositions as types}
+    interpretation}
+
+    This section is a brief outline of type theory, mainly focused on
+    the the branch that studied the interpretation of:
+
+    \begin{itemize}
+    
+        \uncover <2->{\item propositions as types,}
+    
+        \uncover <3->{\item proofs as programs,}
+    
+        \uncover <4->{
+
+            \begin{center}
+        
+                Program : Type $\Leftrightarrow$ Proof : Proposition
+                
+            \end{center}
+        
+        }
+
+        \uncover <5->{\item execution as normalization.}
+
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    \dots or ``Formulae as Types'', Curry-Howard-de Bruijn
+    Correspondence, Brouwer’s Dictum, and others.
+
+    \begin{itemize}
+    
+        \uncover <2->{\item The analogy between a certain kind of
+            logical formulas, namely the \textbf{propositions}, and the
+        meaning given to \textbf{types} is indeed a \textbf{mathematical
+        theorem}.}
+    
+        \uncover <3->{\item It is usually referred as the \textbf{Curry
+            - Howard Isomorphism}.}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    \begin{quotation}
+    
+        Propositions as Types is a notion with breadth. It applies to a
+        range of logics including propositional, predicate,
+        second-order, intuitionistic, classical, modal, and linear. It
+        underpins the foundations of functional programming, explaining
+        features including functions, records, variants, parametric
+        polymorphism, data abstraction, continuations, linear types, and
+        session types. (Wadler, Propositions as types)
+    
+    \end{quotation}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    (Wadler, continued)
+
+    \begin{itemize}
+    
+        \uncover <2->{\item \begin{quotation}
+        
+            Why should it be the case that intuitionistic natural
+            deduction, as developed by Gentzen in the 1930s, and
+            simply-typed $\lambda$-calculus, as developed by Church
+            around the same time for an unrelated purpose, should be
+            discovered thirty years later to be essentially identical?
+        
+        \end{quotation}}
+    
+        \uncover <3->{\item \begin{quotation}
+        
+            The logician Hindley and the computer scientist Milner
+            independently developed the same type system, now dubbed
+            Hindley-Milner.
+       
+        \end{quotation}}
+    
+        \uncover <4->{\item \begin{quotation}
+        
+            The logician Girard and the computer scientist Reynolds
+            independently developed the same calculus, now dubbed
+            Girard-Reynolds.
+        
+        \end{quotation}}
+
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    (Wadler, continued)
+
+    \begin{itemize}
+    
+        \uncover <2->{\item \begin{quotation}
+        
+            In 1934, Curry observed a curious fact, relating a theory of
+            functions to a theory of implication. Every type of a
+            function ($A \rightarrow B$) could be read as a proposition
+            ($A \supset B$), and under this reading the type of any
+            given function would always correspond to a provable
+            proposition. 
+        
+        \end{quotation}}
+    
+        \uncover <3->{\item \begin{quotation}
+        
+            Conversely, for every provable proposition there was a
+            function with the corresponding type.
+
+        \end{quotation}}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    (Wadler, continued)
+
+    \begin{itemize}
+    
+        \uncover <2->{\item \begin{quotation}
+     
+            In 1969, Howard circulated a xeroxed manuscript. It was not
+            published until 1980, where it appeared in a Festschrift
+            dedicated to Curry.  Motivated by Curry’s observation,
+            Howard pointed out that there is a similar correspondence
+            between natural deduction, on the one hand, and simply-typed
+            $\lambda$-calculus, on the other, and he made explicit the
+            third and deepest level of the correspondence (\dots), that
+            simplification of proofs corresponds to evaluation of
+            programs.
+        
+        \end{quotation}}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Propositions as types}
+
+    \begin{center}
+        
+        {\Huge Isomorphism}
+
+    \end{center}
+
+\end{frame}
+
+
+% section Short history of type theory (end)
+
+\section{Why types matters} % (fold)
+\label{sec:Why types matters}
+
+\begin{frame}
+
+    \frametitle{Type systems helps}
+
+    I will give a few examples taken from a recent research that shows
+    the relevance of static typing (as opposed to dynamic typing) to
+    build correct code in less time (ICSE 2014, OOPSLA 2012).
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{ICSE 2014 How Do API Documentation \dots}
+
+    \begin{quotation}
+    
+        The presence of a static type system had a significant positive
+        effect on development time: Subjects using the statically typed
+        language required between 15 and 89 minutes less time for
+        solving the task.
+    
+    \end{quotation}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{OOPSLA 2012 Static Type Systems (Sometimes) \dots}
+
+    \begin{quotation}
+    
+        We gave 27 subjects five programming tasks and found that the
+        type systems had a significant impact on the development time:
+        for three of five tasks me measured apositive impact of the
+        static type system, for two tasks we measured a positive impact
+        of the dynamic type system.
+    
+    \end{quotation}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{ICFP 2010 Experience Report: Haskell as a Reagent}
+
+    \begin{quotation}
+    
+        At the end, the question was: is the extra effort needed for
+        maintaining code written in two languages justified? Do we get
+        any advantage out of combining two high-level, but quite
+        different, languages?  As we try to show in this paper, in our
+        experience the answer is affirmative, sometimes in non obvious
+        ways.
+    
+    \end{quotation}
+
+\end{frame}
+
+% section Why types matters (end)
+
+\section{Types in programming languages} % (fold)
+\label{sec:Types in programming languages}
+
+\begin{frame}
+
+    \frametitle{Why do not we program in the only one (\textit{true}) typed language ?}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item Because it does not exist !}
+    
+        \uncover <3->{\item Historically, languages have been built
+            before the theory formalized algorithms and techniques ---
+            the concept of monad as a way of encapsulating
+            \textit{state} in functional languages is in (Moggi,
+            Information and Computation 93, 1991).} 
+    
+        \uncover <4->{\item If types are logical formulas we still have
+            the problem of choosing the right \textbf{logical theory}.}
+
+        \uncover <5->{\item Moreover there is not an agreement on what
+            is the right amount of typing: we are full of endless
+            \textit{this feature versus that feature} like \dots}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Typed vs untyped}
+
+    \begin{quotation}
+    
+        Languages that do not restrict the range of variables are called
+        \textbf{untyped languages}: they do not have types or,
+        equivalently, have a single universal type that contains all
+        values. In these languages, operations may be applied to
+        inappropriate arguments: the result may be a fixed arbitrary
+        value, a fault, an exception, or an unspecified effect.
+        (Cardelli, Type Systems)
+    
+    \end{quotation}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Untyped or \textit{uni}typed languages ?}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item Lisp is the typical untyped language \dots
+            is Ruby a typed language ?}
+    
+        \uncover <3->{\item Or Javascript (Node) ?}
+    
+        \uncover <4->{\item People deal with  the issue of having a type
+            system \textbf{which allows bad things to happen} saying
+            that \dots}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Static \textit{vs} dynamic}
+
+    \dots the type system is \textit{dynamic} or that their terms are
+    \textit{duck typed}.
+
+    \begin{itemize}
+    
+        \uncover <2->{\item Come on ! It does not make any sense: either
+            a language is typed, or it is not.}
+    
+        \uncover <3->{\item A language can be very useful even if it is
+            not typed: this is not the point.}
+    
+        \uncover <4->{\item Because the real issue is that even
+            (\textit{statically}) typed languages \textbf{can fail},
+            because of \dots }
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Safe \textit{vs} unsafe}
+
+    \dots \textbf{safety}. Quoting again Cardelli:
+
+    \begin{quotation}
+    
+        In reality, certain statically checked languages do not ensure
+        \textbf{safety}. That is, their set of forbidden errors does not
+        include all untrapped errors. (\dots) For example (\dots) C has
+        many unsafe and widely used features, such as pointer arithmetic
+        and casting. It is interesting to notice that \textbf{the first
+        five of the ten commandments for C programmers are directed at
+        compensating for the weak-checking aspects of C}.  Some of the
+        problems caused by weak checking in C have been alleviated in C++,
+        and even more have been addressed in Java, confirming a trend away
+        from weak checking.
+    
+    \end{quotation}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Explicit \textit{vs} implicit}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item The real burden in using types is the
+            \textbf{extra work needed to specify types}: see what
+            happens in C++ (even with \textit{auto}) or Java.}
+    
+        \uncover <3->{\item \textbf{The real advantage} is in using
+            languages where types can be \textit{inferred} by the
+            compiler, with none to little help from the programmer.}
+    
+        \uncover <4->{\item Even better if the \textit{typing relation}
+            is decidable (Scala type system, for example, is known to be
+            Turing complete).}
+    
+    \end{itemize}
+
+\end{frame}
+
+% section Types in programming languages (end)
+
+\section{Conclusions} % (fold)
+\label{sec:Conclusions}
+
+\begin{frame}
+
+    \frametitle{Do not miss an opportunity}
+
+    \begin{itemize}
+    
+        \uncover <2->{\item A functional programming language without a
+            type system \textbf{misses an opportunity}.}
+    
+        \uncover <3->{\item A type system whose term language is not
+                isomorphic to the programming langage \textbf{misses an
+            opportunity}.}
+    
+        \uncover <4->{\item Functional programming and type systems are
+            two faces of the same thing: \textbf{do not use one without
+        the other}.}
+    
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Questions}
+
+    \begin{center}
+        
+        {\Huge ?}
+
+    \end{center}
+
+\end{frame}
+
+\begin{frame}
+
+    \frametitle{Thanks \& see you soon \dots}
+
+    \begin{description}
+    
+        \uncover <2->{\item[Thanks] for paying attention.}
+    
+        \uncover <3->{\item[The biggest Italian DevOps meeting] is in Bologna,
+            April $10^{\mbox{th}}$, 2015.}
+        
+        \uncover <4->{\item[IDI2015] Incontro DevOps Italia 2015:
+            \url{http://incontrodevops.it/idi2015/} }
+    
+    
+    \end{description}
+
+\end{frame}
+
+% section Conclusions (end)
+
+\end{document}
