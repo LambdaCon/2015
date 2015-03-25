@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Concatenative programming</title>
+
+		<meta name="description" content="Function composition for everything">
+		<meta name="author" content="Andrea Ferretti">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Function composition</h1>
+					<h2>for everything</h2>
+					<p>
+						<small>by Andrea Ferretti</small>
+					</p>
+				</section>
+
+        <section>
+          <h2>Restrictions</h2>
+          <blockquote>When forced to work within a strict framework the imagination is taxed to its utmost – and will produce its richest ideas</blockquote>
+          <p>T. S. Eliot</p>
+        </section>
+
+        <section>
+          <h2>La disparition</h2>
+          <img src="img/perec.jpg" height="600" />
+        </section>
+
+        <section>
+          <h2>Dodecaphonic music</h2>
+          <img src="img/dodecaphonic.png" />
+        </section>
+
+        <section>
+          <h2>Phil Hansen</h2>
+          <img src="img/hansen.jpg" />
+        </section>
+
+        <section>
+          <h2>Haskell IO type</h2>
+          <img src="img/haskell.png" />
+        </section>
+
+        <section>
+          <h2>A provocation</h2>
+          <p class="fragment">Can we program just using functions...</p>
+          <p class="fragment">...only through composition?</p>
+        </section>
+
+        <section>
+          <h2>The issue</h2>
+          <p>We can only compose functions when the arity matches</p>
+        </section>
+
+        <section>
+          <h2>Composition</h2>
+          <img src="img/composition.png" />
+        </section>
+
+        <section>
+          <h2>Solution</h2>
+          <p>We use a global data structure to thread state</p>
+        </section>
+
+        <section>
+          <h2>Naive Solution</h2>
+          <h3>Use a key-value map!</h3>
+          <ul>
+            <li class="fragment">Back to global variables</li>
+            <li class="fragment">No way to enforce encapsulation</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Working Solution</h2>
+          <h3>Use a stack!</h3>
+          <ul>
+            <li class="fragment">Can only access variables on top</li>
+            <li class="fragment">Using primitives, we can access values that are below</li>
+            <li class="fragment">The farther a value, the less local it becomes</li>
+            <li class="fragment">Not local and globla values, but a scale of locality</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Three ways to look at Factor</h2>
+          <ol>
+            <li class="fragment">A pure language based on <a>functions</a> <br /> <span class="fragment">Like point-free programming in Haskell!</span></li>
+            <li class="fragment">A way to describe <a>pipelines</a> of operations <br /> <span class="fragment">Like pipes in bash!</span></li>
+            <li class="fragment">A language with no syntax to embed <a>DSLs</a> <br /> <span class="fragment">Like a Lisp!</span></li>
+          </ol>
+        </section>
+
+        <section>
+          <h1>Time for live demo!</h1>
+        </section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
