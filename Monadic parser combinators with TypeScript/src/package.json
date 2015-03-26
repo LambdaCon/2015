@@ -1,0 +1,16 @@
+{
+  "name": "monparsing",
+  "version": "1.0.0",
+  "description": "Source code for the talk 'Monadic parser combinators with TypeScript'",
+  "main": "parser.js",
+  "scripts": {
+    "postinstall": "tsc parser.ts spec/parser.spec.ts --module commonjs",
+    "test": "jasmine-node --autoTest --watchFolders . spec/"
+  },
+  "author": "Simone Busoli <simone.busoli@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^1.4",
+    "jasmine-node": "^2.0.0"
+  }
+}
