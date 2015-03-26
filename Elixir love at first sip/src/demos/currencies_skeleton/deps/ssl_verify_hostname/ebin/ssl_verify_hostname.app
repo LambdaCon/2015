@@ -1,0 +1,8 @@
+{application,ssl_verify_hostname,
+             [{description,[]},
+              {vsn,"1.0.1"},
+              {modules,[ssl_verify_hostname]},
+              {registered,[]},
+              {applications,[kernel,stdlib,ssl]},
+              {mod,{ssl_verify_hostname_app,[]}},
+              {env,[]}]}.

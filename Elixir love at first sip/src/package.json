@@ -1,0 +1,29 @@
+{
+  "name": "elixir-love-at-first-sip",
+  "version": "1.0.0",
+  "description": "This repository contains the slides for my talk at [LambdaCon][lambdacon] 2015.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-sass": "^1.3.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-sass": "^1.3.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whatyouhide/elixir-love-at-first-sip.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/whatyouhide/elixir-love-at-first-sip/issues"
+  },
+  "homepage": "https://github.com/whatyouhide/elixir-love-at-first-sip"
+}
