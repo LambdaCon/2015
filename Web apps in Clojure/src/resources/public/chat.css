@@ -1,0 +1,73 @@
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+div#chat {
+    min-height: 20em;
+    min-width: 60em;
+    height: 20em;
+    width: 60em;
+    overflow-y: scroll;
+    border: solid 1px #ddd;
+    margin: 0 auto;
+    padding-bottom: 1em;
+}
+
+form#submit {
+    width: 60em;
+    min-width: 30em;
+    margin: 0 auto;
+    padding: 1em 0;
+}
+
+form#submit input#message {
+    font-size: 14pt;
+    width: 40em;
+    padding: 0.3em;
+    vertical-align: middle;
+}
+
+form#submit button#submit-message {
+    padding: 0.3em;
+    height: 3em;
+    width: 10em;
+    margin-left: 1em;
+    color: white;
+    vertical-align: middle;
+    border: solid 1px #5577aa;
+    background-color: #5577aa;
+}
+
+div#error {
+    color: red;
+    font-size: 11pt;
+    text-align: center;
+}
+
+div#chat tr.message td {
+    font-size: 10pt;
+    padding: 0.5rem 1rem 0;
+    vertical-align: middle;
+}
+
+div#chat tr.message td.timestamp {
+    color: gray;
+    font-size: 8pt;
+}
+
+div#chat tr.message td.username {
+    font-weight: bold;
+    font-size: 8pt;
+    color: #6699cc;
+    width: 12em;
+}
+
+div#chat tr.message.private td.username {
+    font-weight: bold;
+    font-size: 8pt;
+    color: #cc3311;
+}
