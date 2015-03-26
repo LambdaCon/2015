@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+
+<title>Web Apps in Clojure</title>
+
+<meta name="description" content="Web Apps in Clojure">
+<meta name="author" content="Jan Stępień, Yannick Scherer">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="stylesheet" href="css/reveal.css">
+<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/github.css">
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+if( window.location.search.match( /print-pdf/gi ) ) {
+  var link = document.createElement( 'link' );
+  link.rel = 'stylesheet';
+  link.type = 'text/css';
+  link.href = 'css/print/pdf.css';
+  document.getElementsByTagName( 'head' )[0].appendChild( link );
+}
+</script>
+
+<!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
+
+<body data-background-transition="fade">
+
+<div class="reveal">
+
+  <div class="slides">
+    <section>
+      <h1>Web Apps in Clojure</h1>
+
+      <span class="author">
+        Jan Stępień
+      </span>
+
+      <span class="author">
+        Yannick Scherer
+      </span>
+    </section>
+
+    <section>
+      <div>
+        github.com/LambdaCon/2015
+      </div>
+
+      <div style="padding: 1em">
+        ↓
+      </div>
+
+      <div>
+        Web Apps in Clojure
+      </div>
+    </section>
+
+    <section>
+      <section>
+        <h3>Ring</h3>
+      </section>
+
+      <section>
+        <code>Request → Handler → Response</code>
+      </section>
+
+      <section>
+        <h4>Request</h4>
+
+        <pre><code>
+(def request
+  {:request-method :get
+   :uri "/path/to/something"
+   :query-params "x=13&y=24"
+   :headers {"accept" "text/html"}})
+        </code></pre>
+      </section>
+
+      <section>
+        <h4>Response</h4>
+
+        <pre><code>
+(def response
+  {:status 200
+   :body "&lt;html&gt;...&lt;/html&gt;"
+   :headers {"cache-control" "no-cache"
+             "content-type" "text/html"}})
+        </code></pre>
+      </section>
+
+      <section>
+        <h4>Handler</h4>
+
+        <pre><code>
+(defn handler
+  [request]
+  {:status 200
+   :body "Hello, World!"
+   :headers {"content-type" "text/plain"}})
+        </code></pre>
+      </section>
+
+      <section>
+        <h4>Modus Operandi</h4>
+
+        <pre><code>
+(let [request (get-from-client)
+      response (handler request)]
+  (send-back-to-client response)
+        </code></pre>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h3>Run it</h3>
+      </section>
+
+      <section>
+        <pre><code>
+(require '[org.httpkit.server :as http])
+;; =&gt; nil
+(def srv
+  (http/run-server lambdacon.core/hello-handler {:port 8000}))
+;; =&gt; #'user/srv
+srv
+;; =&gt; #&lt;server$run_server$stop_server__4973 ...&gt;
+        </code></pre>
+        <pre data-fragment><code>
+$ curl -v localhost:8000
+&gt; GET / HTTP/1.1
+&gt; User-Agent: curl/7.35.0
+&gt; Host: localhost:8000
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 200 OK
+&lt; Content-Type: text/plain
+&lt; Content-Length: 13
+&lt; Server: http-kit
+&lt; Date: Wed, 24 Sep 2014 13:43:38 GMT
+&lt;
+Hello, World!
+        </code></pre>
+        <pre data-fragment><code>
+(srv)
+;; =&gt; nil
+        </code></pre>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h3>Middlewares</h3>
+      </section>
+
+      <section>
+        <pre><code>
+(defn middleware [handler]
+  (fn [request]
+    ...))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn middleware [handler]
+  (fn [request]
+    (handler request)))
+        </code></pre>
+        <pre data-fragment><code>
+(def composed-handler
+  (middleware hello-handler))
+        </code></pre>
+        <pre data-fragment><code>
+(def composed-handler
+  (-> hello-handler
+      middleware))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn log-before [handler]
+  (fn [request]
+    (println (format "%s %s" (java.util.Date.) (:uri request)))
+    (handler request)))
+        </code></pre>
+        <pre data-fragment><code>
+(defn log-after [handler]
+  (fn [request]
+    (let [response (handler request)]
+      (println (format "%s %s" (:status response) (:uri request)))
+      response)))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn wrap-timing [handler]
+  (fn [request]
+    (let [before (System/nanoTime)
+          response (handler request)
+          difference (- (System/nanoTime) before)]
+      (println (format "Took %s ns" difference))
+      response)))
+        </code></pre>
+        <pre data-fragment><code>
+(def composed-handler
+  (-> hello-handler
+      wrap-timing))
+        </code></pre>
+        <pre data-fragment><code>
+(composed-handler {:uri "/"})
+;; Took 553615 ns
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn base-handler [request]
+  ...)
+
+(defn wrap-404 [handler]
+  (fn [request]
+    ...))
+
+(def hello-handler
+  (-> base-handler
+      wrap-404))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn wrap-params [handler]
+  (fn [request]
+    ...))
+
+(def hello-handler
+  (-> base-handler
+      wrap-params
+      wrap-404))
+        </code></pre>
+        <pre data-fragment><code>
+(ns lambdacon.core
+  (:require [ring.middleware.params :as params]))
+
+(def hello-handler
+  (-> base-handler
+      params/wrap-params
+      wrap-404))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn hello-handler [req]
+  (let [handler (-> base-handler
+                    params/wrap-params
+                    wrap-404)]
+    (handler req)))
+        </code></pre>
+        <pre data-fragment><code>
+(def srv
+  (http/run-server lambdacon.core/hello-handler {:port 8000}))
+        </code></pre>
+        <pre data-fragment><code>
+(defn base-handler
+  [req]
+  (let [name (or (get-in req [:params "name"] "World"))]
+    (if (= (:uri req) "/")
+      {:status 200
+       :body (format "Good afternoon, %s!" name)
+       :headers {"content-type" "text/plain"}})))
+        </code></pre>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h3>Routing</h3>
+      </section>
+
+      <section>
+        <pre><code>
+(defn base-handler
+  [req]
+  (let [name (or (get-in req [:params "name"] "World"))]
+    (if (= (:uri req) "/")
+      {:status 200
+       :body (format "Hello, %s!" name)
+       :headers {"content-type" "text/plain"}})))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(ns lambdacon.core
+  (:require [compojure.core :refer :all]
+            [ring.middleware.params :as params]))
+        </code></pre>
+
+        <pre data-fragment><code>
+(defn base-handler
+  [req]
+  (let [name (or (get-in req [:params "name"] "World"))]
+    {:status 200
+     :body (format "Hello, %s!" name)
+     :headers {"content-type" "text/plain"}}))
+        </code></pre>
+
+        <pre data-fragment><code>
+(defroutes app
+  (GET "/" [] base-handler))
+        </code></pre>
+
+        <pre data-fragment><code>
+(defn hello-handler [req]
+  (let [handler (-> app
+                    params/wrap-params
+                    wrap-404)]
+    (handler req)))
+        </code></pre>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h3>HTML</h3>
+      </section>
+
+      <section>
+        <pre><code>
+(require '[hiccup.core :refer [html]])
+        </code></pre>
+        <pre data-fragment><code>
+(html [:div "Hello, World!"])
+        </code></pre>
+        <pre data-fragment><code>
+(html [:div#content "Hello, World!"])
+        </code></pre>
+        <pre data-fragment><code>
+(html [:div.wide "Hello, World!"])
+        </code></pre>
+        <pre data-fragment><code>
+(html [:div {:style "color: red;"} "Hello, World!"])
+        </code></pre>
+        <pre data-fragment><code>
+(html [:div [:strong "Hello"] ", World!"])
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(defn page [title points]
+  [:html
+   [:head
+    [:title title]]
+   [:body
+    [:h1 title]
+    [:ul
+     (for [point points]
+       [:li point])]]])
+        </code></pre>
+
+        <pre data-fragment><code>
+(page "Agenda" ["Introduction" "Hacking Clojure" "Summary"])
+        </code></pre>
+
+        <pre data-fragment><code>
+(clojure.pprint/pprint
+  (page "Agenda" ["Introduction" "Hacking Clojure" "Summary"]))
+        </code></pre>
+
+        <pre data-fragment><code>
+(html (page "Agenda" ["Introduction" "Hacking Clojure" "Summary"]))
+        </code></pre>
+      </section>
+
+      <section>
+        <pre><code>
+(ns lambdacon.core
+  (:require [hiccup.core :refer [html]]
+            [compojure.core :refer :all]
+            [ring.middleware.params :as params]))
+        </code></pre>
+      </section>
+    </section>
+    <section>
+      <section>
+      <h3>State</h3>
+      </section>
+
+      <section>
+      <h3>Atoms</h3>
+
+      <pre><code>
+(def data (atom {}))
+(swap! data
+       (fn [value]
+         (assoc value :x 0)))
+@data ;; => {:x 0}
+</code></pre>
+
+      </section>
+
+      <section>
+        <h3>Refs</h3>
+        <pre><code>
+(def allowed? (ref #{:x}))
+(def values (ref []))
+
+(defn add-value!
+  [v]
+  (dosync
+    (if (contains? @allowed? v)
+      (alter values conj v))))
+
+@values ;; => [:x]
+</code><pre>
+      </section>
+
+      <section>
+        <h3>Abstraction via Protocols</h3>
+
+        <pre><code>
+(defprotocol+ MessageStore
+  "Protocol for Message Storage."
+  (store-message! [this ^Message message]
+    "Store a message.")
+  (clear-messages! [this]
+    "Delete all messages from store.")
+  (messages [this]
+    "Return a seq of all stored messages.")
+  (register-observer! [this f]
+    "Register a function that gets called with each new message
+     that is put into the store."))
+</code><pre>
+
+      </section>
+
+    <section>
+<pre><code>
+(reify MessageStore
+  (store-message! [_ msg]
+    )
+  (messages [_]
+    )
+  (clear-messages! [_]
+    )
+  (register-observer! [_ f]
+    ))
+</code></pre>
+    </section>
+    </section>
+
+<section>
+<section>
+<h3>Putting it all together:</h3>
+<h2>A simple Chat</h2>
+</section>
+<section>
+<ul>
+<li><code>GET /messages</code></li>
+<li><code>POST /register</code></li>
+<li><code>POST /send</code></li>
+<li><code>POST /send-private</code></li>
+</ul>
+</section>
+</section>
+
+  </div>
+
+</div>
+
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+
+<script>
+
+(function(coll) {
+ for (var id in coll) {
+   var elem = coll[id];
+   if (elem.setAttribute) {
+     elem.setAttribute("data-trim", 1);
+     elem.setAttribute("class", "clojure");
+   }
+ }
+})(document.getElementsByTagName("code"));
+
+(function(coll) {
+  for (var id in coll) {
+    var elem = coll[id];
+    if (elem.getAttribute && elem.hasAttribute("data-fragment")) {
+      elem.setAttribute("class", "fragment");
+    }
+  }
+})(document.getElementsByTagName('*'));
+
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+controls: true,
+progress: true,
+history: true,
+center: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+// Parallax scrolling
+// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+// parallaxBackgroundSize: '2100px 900px',
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+]
+});
+
+</script>
+
+</body>
+</html>
