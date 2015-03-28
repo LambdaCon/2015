@@ -322,7 +322,25 @@ def addNumbersAction(
 
 -------------------------------------------
 
-### (2<sup>32</sup>)<sup><sup>(2<sup>32</sup>)</sup></sup>
+### 2<sup>32</sup>
+
+<details>if the code is deterministic</details>
+
+-------------------------------------------
+
+### 2<sup>64</sup>
+
+<details>if the code is deterministic</details>
+
+-------------------------------------------
+
+## `String -> String`
+
+-------------------------------------------
+
+## &infin;
+
+<details>if the code is deterministic</details>
 
 -------------------------------------------
 
@@ -354,6 +372,39 @@ program has the same structure as the proof</details>
 
 -------------------------------------------
 
+## Typed control strucures
+
+-------------------------------------------
+
+## Everything is an expression
+
+-------------------------------------------
+
+# homogeneous branches
+
+<div style="margin-top: 300px;">
+```scala
+val myValue = if(expression) {
+  "if true"
+} else {
+  "if false"
+}
+```
+</div>
+
+-------------------------------------------
+
+# Typed control structures
+
+<div style="margin-top: 300px;">
+```scala
+val myValue =
+  for(x <- xs)
+  yield x*x
+```
+</div>
+
+-------------------------------------------
 
 ## Maybe
 
@@ -377,8 +428,20 @@ program has the same structure as the proof</details>
 
 -------------------------------------------
 
-## Parametricity
+```scala
+sealed trait Meter
+sealed trait Mile
 
+type RegularLength = Int @@ Meter
+type ImperialGobbledygook = Int @@ Mile
+
+
+val marsProbeAltitude: RegularLength = …
+```
+
+-------------------------------------------
+
+## Parametricity
 
 -------------------------------------------
 
@@ -441,7 +504,7 @@ things and reduce dramatically the number of tests needed</details>
 ### `x in rev(a) => x in a`
 
 # Theorems for free
-<video src="http://clementd-files.cellar-c1.clvrcld.net/lol/money-shower.webm" loop/>
+<video src="http://clementd-files.cellar-c1.clvrcld.net/lol/money-loop.webm" loop/>
 
 -------------------------------------------
   
@@ -790,6 +853,12 @@ def fmap[A,B](
 -------------------------------------------
 
 ## `a -> b -> a`
+
+<details>function which takes an a and a b, produces an a</details>
+
+-------------------------------------------
+
+## `(a, b) -> a`
 
 <details>function which takes an a and a b, produces an a</details>
 
