@@ -1,0 +1,5 @@
+name,email,created_at,is_deleted
+Lois Williams,lois.williams50@example.com,2015-02-01T10:23:45.964Z,1
+Peter Adams,lois.williams@example.com,2015-01-21T10:21:45.964Z,0
+Russell Martin,russell.martin@example.com,2015-02-01T10:23:45.964Z,1
+Bruce Shaw,bruce.shaw@example.com,2015-02-01T10:23:45.964Z,1
