@@ -515,7 +515,22 @@ map[A,B]#<span class="fu">get</span>(key: A): Option[B]</code></pre>
 </section>
 <section class="slide level1">
 
-<h3 id="section">(2<sup>32</sup>)<sup><sup>(2<sup>32</sup>)</sup></sup></h3>
+<h3 id="section">2<sup>32</sup></h3>
+<p><details>if the code is deterministic</details></p>
+</section>
+<section class="slide level1">
+
+<h3 id="section-1">2<sup>64</sup></h3>
+<p><details>if the code is deterministic</details></p>
+</section>
+<section class="slide level1">
+
+<h2 id="string---string"><code>String -&gt; String</code></h2>
+</section>
+<section class="slide level1">
+
+<h2 id="section-2">∞</h2>
+<p><details>if the code is deterministic</details></p>
 </section>
 <section class="slide level1">
 
@@ -541,6 +556,32 @@ map[A,B]#<span class="fu">get</span>(key: A): Option[B]</code></pre>
 </section>
 <section class="slide level1">
 
+<h2 id="typed-control-strucures">Typed control strucures</h2>
+</section>
+<section class="slide level1">
+
+<h2 id="everything-is-an-expression">Everything is an expression</h2>
+</section>
+<section id="homogeneous-branches" class="slide level1">
+<h1>homogeneous branches</h1>
+<div style="margin-top: 300px;">
+<pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> myValue = <span class="kw">if</span>(expression) {
+  <span class="st">&quot;if true&quot;</span>
+} <span class="kw">else</span> {
+  <span class="st">&quot;if false&quot;</span>
+}</code></pre>
+</div>
+</section>
+<section id="typed-control-structures" class="slide level1">
+<h1>Typed control structures</h1>
+<div style="margin-top: 300px;">
+<pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">val</span> myValue =
+  <span class="kw">for</span>(x &lt;- xs)
+  <span class="kw">yield</span> x*x</code></pre>
+</div>
+</section>
+<section class="slide level1">
+
 <h2 id="maybe-2">Maybe</h2>
 </section>
 <section class="slide level1">
@@ -557,6 +598,17 @@ map[A,B]#<span class="fu">get</span>(key: A): Option[B]</code></pre>
 
 <h2 id="tagged-types">Tagged types</h2>
 <p><details>perfect for physical quantities. Type + unit</details></p>
+</section>
+<section class="slide level1">
+
+<pre class="sourceCode scala"><code class="sourceCode scala"><span class="kw">sealed</span> <span class="kw">trait</span> Meter
+<span class="kw">sealed</span> <span class="kw">trait</span> Mile
+
+<span class="kw">type</span> RegularLength = Int @@ Meter
+<span class="kw">type</span> ImperialGobbledygook = Int @@ Mile
+
+
+<span class="kw">val</span> marsProbeAltitude: RegularLength = …</code></pre>
 </section>
 <section class="slide level1">
 
@@ -605,7 +657,7 @@ map[A,B]#<span class="fu">get</span>(key: A): Option[B]</code></pre>
 </section>
 <section id="theorems-for-free" class="slide level1">
 <h1>Theorems for free</h1>
-<video src="http://clementd-files.cellar-c1.clvrcld.net/lol/money-shower.webm" loop/>
+<video src="http://clementd-files.cellar-c1.clvrcld.net/lol/money-loop.webm" loop/>
 </section>
 <section class="slide level1">
 
@@ -912,6 +964,11 @@ Hole2: List[B]</code></pre>
 </section>
 <section class="slide level1">
 
+<h2 id="a-b---a"><code>(a, b) -&gt; a</code></h2>
+<p><details>function which takes an a and a b, produces an a</details></p>
+</section>
+<section class="slide level1">
+
 <h2 id="a---b---a-1"><code>a -&gt; (b -&gt; a)</code></h2>
 <p><details>currying. function which takes an a, produces a function that takes a b, produces an a. allows for very effective composition</details></p>
 </section>
@@ -1042,7 +1099,7 @@ Hole2: List[B]</code></pre>
 </section>
 <section class="slide level1">
 
-<h2 id="section-1">???</h2>
+<h2 id="section-3">???</h2>
 </section>
 <section class="slide level1">
 
