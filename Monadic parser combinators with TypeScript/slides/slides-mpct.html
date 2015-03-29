@@ -71,7 +71,25 @@
 <blockquote>
 <p>http://en.wikipedia.org/wiki/Erik_Meijer_(computer_scientist)</p>
 </blockquote>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="a11c4d905294a95dbf5faaad503fe216"><div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 661px; height: 117px; left: 49px; top: 222px;" data-block-id="91f309002c133b630882e5f54b331bf9">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f"><div class="sl-block" data-block-type="code" style="width: 904px; height: 325px; left: 42px; top: 250px;" data-block-id="6a1b518aae5deee9f8676ddd8ba91c3f">
+    <div class="sl-block-content" style="z-index: 11; font-size: 176%; border-width: 1px;">
+        <pre class="none"><code>newtype Parser a = Parser (String -&gt; Tree)
+
+newtype Parser a = Parser (String -&gt; (Tree,String))
+
+newtype Parser a = Parser (String -&gt; [(Tree,String)])
+
+newtype Parser a = Parser (String -&gt; [(a,String)])</code></pre>
+    </div>
+</div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 790px; left: 85px; top: 43px;" data-block-id="9eff819990b305548eca6067b641c6a7">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
+        <h1>A type for parsers</h1>
+    </div>
+</div>
+</section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="a11c4d905294a95dbf5faaad503fe216"><div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 661px; height: 117px; left: 49px; top: 222px;" data-block-id="91f309002c133b630882e5f54b331bf9">
     <div class="sl-block-content" style="z-index: 11; font-size: 200%; border-width: 1px;">
         <pre class="none"><code>newtype Parser a = 
     Parser (String -&gt; [(a,String)])</code></pre>
@@ -94,7 +112,7 @@
         <h1>A type for parsers</h1>
     </div>
 </div>
-<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 180.327868852459px; height: 44px; left: 731px; top: 447px;" data-block-id="67779932a1a832d2cbb1dccd6370090f">
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 180.327868852459px; height: 44px; left: 680px; top: 447px;" data-block-id="67779932a1a832d2cbb1dccd6370090f">
     <div class="sl-block-content" style="z-index: 15;">
         <img style="visibility: visible;" data-natural-width="250" data-natural-height="61" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1194403/logo_small_1_.png">
     </div>
@@ -103,7 +121,7 @@
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 790px; left: 85px; top: 43px;" data-block-id="90ebd468a252ce9ce5e9bdf8b35d47af">
     <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<h1>A simple parser</h1>
+<h1>A primitive parser</h1>
 </div>
 </div>
 <div class="sl-block" data-block-type="code" style="width: 725px; height: 181px; left: 64px; top: 210px;" data-block-id="b87cf131f0131cd640509faf31b54c55"><div class="sl-block-content" style="z-index: 11; font-size: 200%;"><pre class="haskell"><code>item :: Parser Char
@@ -151,12 +169,17 @@ item = Parser (\cs -&gt; case cs of
 
 
 
-<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 901px; height: 219px; left: 31px; top: 280px;" data-block-id="1db0030006aaf1caa80b5b885c80eaee"><div class="sl-block-content" style="z-index: 12; font-size: 167%;"><pre class="javascript"><code>it('should apply parsers in sequence', () =&gt; {
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 901px; height: 219px; left: 31px; top: 337px;" data-block-id="1db0030006aaf1caa80b5b885c80eaee"><div class="sl-block-content" style="z-index: 12; font-size: 167%;"><pre class="javascript"><code>it('should apply parsers in sequence', () =&gt; {
   var result = parse.seq(parse.item, parse.item)('hello');
 
   expect(result.length).toBe(1);
   expect(result[0]).toEqual([['h', 'e'], 'llo']);
-});</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="1d7e35fff6824de764f762693b7c2751">
+});</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 868px; left: 47px; top: 180px;" data-block-id="218c65500da6009a3101383ab4aa0d82"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255); text-align: left;">
+<blockquote>
+<p>Combinators are high-order functions that implement grammar constructions such as sequencing, choice or repetition</p>
+</blockquote>
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="1d7e35fff6824de764f762693b7c2751">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="9f769a00853a139b2123482c89ca144c">
@@ -216,32 +239,46 @@ p ‘seq‘ q = \inp -&gt; [((v,w),inp’’) | (v,inp’) &lt;- p inp
 <h1>The parser monad </h1>
 </div>
 </div>
-<div class="sl-block" data-block-type="code" style="width: 899px; height: 198px; left: 32px; top: 413px;" data-block-id="bac2908b050c6a35ffa5a2731ab52268"><div class="sl-block-content" style="z-index: 11; font-size: 140%;"><pre class="haskell"><code>var concat = [].concat.apply.bind([].concat, []);
-
-var unit = &lt;A&gt;(a:A): Parser&lt;A&gt; =&gt; cs =&gt; [[a, cs]];
+<div class="sl-block" data-block-type="code" style="width: 899px; height: 136px; left: 32px; top: 444px;" data-block-id="bac2908b050c6a35ffa5a2731ab52268"><div class="sl-block-content" style="z-index: 11; font-size: 140%;"><pre class="haskell"><code>var unit = &lt;A&gt;(a:A): Parser&lt;A&gt; =&gt; cs =&gt; [[a, cs]];
 
 var bind = &lt;A, B&gt;(p:Parser&lt;A&gt;) =&gt; (f:(a:A) =&gt; Parser&lt;B&gt;):Parser&lt;B&gt; =&gt; 
     cs =&gt; concat(p(cs).map(res =&gt; f(res[0])(res[1])));</code></pre></div></div>
-<div class="sl-block" data-block-type="code" style="width: 785px; height: 166px; left: 31px; top: 183px;" data-block-id="5bea8178ebf568b79b5f9dd5c740d1dd"><div class="sl-block-content" style="z-index: 12; font-size: 160%;"><pre class="haskell"><code>instance Monad Parser where
+<div class="sl-block" data-block-type="code" style="width: 785px; height: 166px; left: 31px; top: 204px;" data-block-id="5bea8178ebf568b79b5f9dd5c740d1dd"><div class="sl-block-content" style="z-index: 12; font-size: 160%;"><pre class="haskell"><code>instance Monad Parser where
   return a = Parser (\cs -&gt; [(a,cs)])
   p &gt;&gt;= f = Parser (\cs -&gt; concat [parse (f a) cs’ |
                              (a,cs’) &lt;- parse p cs])</code></pre></div></div>
 
-<div class="sl-block" data-block-type="image" style="width: 180.327868852459px; height: 44px; left: 751px; top: 413px;" data-block-id="a13819ee0d16e078df5a805390c3fc6c">
+<div class="sl-block" data-block-type="image" style="width: 180.327868852459px; height: 44px; left: 751px; top: 434px;" data-block-id="a13819ee0d16e078df5a805390c3fc6c">
     <div class="sl-block-content" style="z-index: 14;">
         <img style="visibility: visible;" data-natural-width="250" data-natural-height="61" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1194403/logo_small_1_.png">
     </div>
 </div>
-<div class="sl-block" data-block-type="image" style="width: 76.5057471264368px; height: 52px; left: 853px; top: 183px;" data-block-id="fabb329a976dfa41b2f6520b20eb75c3">
+<div class="sl-block" data-block-type="image" style="width: 76.5057471264368px; height: 52px; left: 853px; top: 204px;" data-block-id="fabb329a976dfa41b2f6520b20eb75c3">
     <div class="sl-block-content" style="z-index: 15;">
         <img style="visibility: visible;" data-natural-width="128" data-natural-height="87" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1194397/logo_1_.png">
     </div>
-</div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="4cd53fe7fbccfac41ca250ad25ea64ad">
+</div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="fc9e44e52944a825683525a0b1f3a090">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="7dbdf7187a18a3e64e61d6adc5c7d7c5">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
+<h1>Almost there</h1>
+</div>
+</div>
+
+<div class="sl-block" data-block-type="code" style="width: 785px; height: 166px; left: 89px; top: 267px;" data-block-id="d79ffd47da7403ce95d1f6732a6c2bc3"><div class="sl-block-content" style="z-index: 12; font-size: 160%;"><pre class="haskell"><code>interface Parser&lt;A&gt; extends IParser&lt;A&gt; {
+  bind: &lt;B&gt;(f:(v:A) =&gt; Parser&lt;B&gt;) =&gt; Parser&lt;B&gt;;
+}
+
+var concat = [].concat.apply.bind([].concat, []);</code></pre></div></div>
+
+
+</section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="4cd53fe7fbccfac41ca250ad25ea64ad">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="af6534e879b50de9fd1cea167329c34f">
     <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255);">
-<h1>And the real one</h1>
+<h1>The real one</h1>
 </div>
 </div>
 <div class="sl-block" data-block-type="code" style="width: 917px; height: 258px; left: 23px; top: 259px;" data-block-id="344b87e33d2392b571ad3f0b8662e1a2"><div class="sl-block-content" style="z-index: 11; font-size: 140%;"><pre class="haskell"><code>var mp = &lt;A&gt;(p:IParser&lt;A&gt;):Parser&lt;A&gt; =&gt; {
@@ -302,7 +339,7 @@ var bind = &lt;A, B&gt;(p:Parser&lt;A&gt;) =&gt; (f:(a:A) =&gt; Parser&lt;B&gt;)
 });</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 600px; left: 180px; top: 325px;" data-block-id="ae2f8621e7887280f6069929f61582dd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="a7dd8ba25959a5b48f24654490d55e49">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="d83629e5861148b00031c459687f9982">
@@ -325,7 +362,7 @@ var bind = &lt;A, B&gt;(p:Parser&lt;A&gt;) =&gt; (f:(a:A) =&gt; Parser&lt;B&gt;)
 });</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 325px;" data-block-id="8a920a4c8dcba1fd458b783bb47ecf60"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="d98a30ecca346953c343f0cdec70c88b">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="3beab93f2bfd02f50368d4b7691b8df4">
@@ -346,10 +383,10 @@ var bind = &lt;A, B&gt;(p:Parser&lt;A&gt;) =&gt; (f:(a:A) =&gt; Parser&lt;B&gt;)
 });</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 325px;" data-block-id="2b2c1dcec06c7f8f59ba92f72940d0e0"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="29a377205f9c4953b8ed2fd8b64df554">
 
 
-<div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="2686f514b467262b7d35891d520ba0d9">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="6cc32e868bc7d609fd66168b25855c78">
     <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
 <h1>Simple parsers</h1>
 </div>
@@ -357,13 +394,21 @@ var bind = &lt;A, B&gt;(p:Parser&lt;A&gt;) =&gt; (f:(a:A) =&gt; Parser&lt;B&gt;)
 
 
 
-<div class="sl-block" data-block-type="code" style="width: 821px; height: 315px; left: 71px; top: 218px;" data-block-id="7861f27abc6c7c2ab73ffcef69055fee"><div class="sl-block-content" style="z-index: 12; font-size: 203%;"><pre class="cs"><code>var digit = sat(x =&gt; x &gt;= '0' &amp;&amp; x &lt;= '9');
-
+<div class="sl-block" data-block-type="code" style="width: 694px; height: 291px; left: 134px; top: 158px;" data-block-id="653362f8f1d7a5662cb0110da8f9cd8e"><div class="sl-block-content" style="z-index: 12; font-size: 160%;"><pre class="cs"><code>var digit = sat(x =&gt; x &gt;= '0' &amp;&amp; x &lt;= '9');
 var lower = sat(x =&gt; x &gt;= 'a' &amp;&amp; x &lt;= 'z');
-
 var upper = sat(x =&gt; x &gt;= 'A' &amp;&amp; x &lt;= 'Z');
 
-var char = (x:string) =&gt; sat(y =&gt; y === x);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+var letter = plus(lower, upper);
+var alphanum = plus(letter, digit);
+
+var char = (x:string) =&gt; sat(y =&gt; y === x);</code></pre></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 181px; top: 449px;" data-block-id="369614dd88f398ab162b200df9dc00ba"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255);">
+<h3>Example</h3>
+</div></div>
+<div class="sl-block" data-block-type="code" style="width: 581px; height: 144px; left: 134px; top: 511px;" data-block-id="314e087a63a2d9722e503fae551fb57b"><div class="sl-block-content" style="z-index: 14; font-size: 160%;"><pre class="cs"><code>var parse_h = char('h');
+
+parse_h('hello'); // [['h', 'ello']]
+parse_h('Hello'); // []</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="598cd15bb56064d211b20061a0d5cba9">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="52da39669743372369b5d02518437e47">
@@ -385,7 +430,7 @@ var char = (x:string) =&gt; sat(y =&gt; y === x);</code></pre></div></div></sect
 });</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 356px;" data-block-id="234832ad4c756026c27046072246ba41"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="e7580e5b6746311bc4216c2c6e7b4281">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="180687c7e79d6bda9b9ed0ef568c6254">
@@ -398,21 +443,21 @@ var char = (x:string) =&gt; sat(y =&gt; y === x);</code></pre></div></div></sect
 
 <div class="sl-block" data-block-type="code" style="width: 838px; height: 105px; left: 42px; top: 190px;" data-block-id="03eeb4b0693faa58c23288e9dd72101e"><div class="sl-block-content" style="z-index: 11; font-size: 155%;"><pre class="cs"><code>var many1 = &lt;A&gt;(p:Parser&lt;A&gt;):Parser&lt;A[]&gt; =&gt; 
     p.bind(x =&gt; many(p).bind(xs =&gt; unit([x].concat(xs))));</code></pre></div></div>
-<div class="sl-block" data-block-type="code" style="width: 556px; height: 290px; left: 42px; top: 391px;" data-block-id="5abc2dc21177f5dbbf0c8a918fddea8c"><div class="sl-block-content" style="z-index: 12; font-size: 115%;"><pre class="cs"><code>it('should concatenate the results', () =&gt; {
-  var result = parse.many1(parse.char('c'))('ccCC');
+<div class="sl-block" data-block-type="code" style="width: 820px; height: 289px; left: 42px; top: 389px;" data-block-id="5abc2dc21177f5dbbf0c8a918fddea8c"><div class="sl-block-content" style="z-index: 12; font-size: 115%;"><pre class="cs"><code>it('should concatenate the results', () =&gt; {
+  var result = parse.many1(parse.char('c'))('ccdd');
 
   expect(result.length).toBe(1);
-  expect(result[0]).toEqual([['c', 'c'], 'CC']);
+  expect(result[0]).toEqual([['c', 'c'], 'dd']);
 });
 
 it('should fail when it cannot parse', () =&gt; {
-  var result = parse.many1(parse.char('c'))('D');
+  var result = parse.many1(parse.char('c'))('d');
 
   expect(result.length).toBe(0);
 });</code></pre></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 325px;" data-block-id="40ddbb17cef1fe2024183e33024caa9f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 181px; top: 325px;" data-block-id="40ddbb17cef1fe2024183e33024caa9f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="57b97bd4f97d1002943d0854ae15a6b1">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="ed61055470647e9dd5e4a8a1d4be6104">
@@ -425,22 +470,22 @@ it('should fail when it cannot parse', () =&gt; {
 
 <div class="sl-block" data-block-type="code" style="width: 663px; height: 99px; left: 57px; top: 188px;" data-block-id="356383a73ff4429d737c9445da1e754a"><div class="sl-block-content" style="z-index: 11; font-size: 155%;"><pre class="cs"><code>var many = &lt;A&gt;(p:Parser&lt;A&gt;):Parser&lt;A[]&gt; =&gt; 
     pplus(many1(p), unit([]));</code></pre></div></div>
-<div class="sl-block" data-block-type="code" style="width: 660px; height: 317px; left: 57px; top: 371px;" data-block-id="44c35bbbcec0513294b62a3a609eb5a4"><div class="sl-block-content" style="z-index: 12; font-size: 115%;"><pre class="cs"><code>it('should concatenate the results', () =&gt; {
-  var result = parse.many(parse.char('c'))('ccD');
+<div class="sl-block" data-block-type="code" style="width: 866px; height: 309px; left: 57px; top: 379px;" data-block-id="44c35bbbcec0513294b62a3a609eb5a4"><div class="sl-block-content" style="z-index: 12; font-size: 115%;"><pre class="cs"><code>it('should return empty array when it cannot parse', () =&gt; {
+  var result = parse.many(parse.char('C'))('D');
 
   expect(result.length).toBe(1);
-  expect(result[0]).toEqual([['c', 'c'], 'D']);
+  expect(result[0]).toEqual([[], 'D']);
 });
 
 it('should return empty array when it cannot parse', () =&gt; {
-  var result = parse.many(parse.char('c'))('D');
+  var result = parse.many(parse.char('C'))('D');
 
   expect(result.length).toBe(1);
   expect(result[0]).toEqual([[], 'D']);
 });</code></pre></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 309px;" data-block-id="a5982029788789c345537f719ec2b35f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 181px; top: 309px;" data-block-id="a5982029788789c345537f719ec2b35f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="21bf3617b7fd45393264c99e630e228c">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="2f45736fc11d30443a5aed419b2c0191">
@@ -453,15 +498,15 @@ it('should return empty array when it cannot parse', () =&gt; {
 
 <div class="sl-block" data-block-type="code" style="width: 904px; height: 88px; left: 29px; top: 180px;" data-block-id="03321836ab4d4cd5754e85325957d617"><div class="sl-block-content" style="z-index: 11; font-size: 137%;"><pre class="cs"><code>var sepby1 = &lt;A, B&gt;(p:Parser&lt;A&gt;, sep:Parser&lt;B&gt;):Parser&lt;A[]&gt; =&gt;
   p.bind(x =&gt; many(sep.bind(_ =&gt; p)).bind(xs =&gt; unit([x].concat(xs))));</code></pre></div></div>
-<div class="sl-block" data-block-type="code" style="width: 783px; height: 177px; left: 29px; top: 391px;" data-block-id="9d7ea72066fc180ce0e7a63ed182c2a3"><div class="sl-block-content" style="z-index: 12; font-size: 129%;"><pre class="cs"><code>it('should parse letters separated by digits', () =&gt; {
+<div class="sl-block" data-block-type="code" style="width: 783px; height: 177px; left: 29px; top: 413px;" data-block-id="9d7ea72066fc180ce0e7a63ed182c2a3"><div class="sl-block-content" style="z-index: 12; font-size: 129%;"><pre class="cs"><code>it('should parse letters separated by digits', () =&gt; {
   var result = parse.sepby1(parse.letter, parse.digit)('a1b2c3');
 
   expect(result.length).toBe(1);
   expect(result[0]).toEqual([['a', 'b', 'c'], '3']);
 });</code></pre></div></div>
-<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 309px;" data-block-id="71d7887183949edb8c2fd099bf582238"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 181px; top: 337px;" data-block-id="71d7887183949edb8c2fd099bf582238"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="780b8f39fdb77dab136cf590008812ec">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="1bc32f06cee80af88d04e27c4d1ef028">
@@ -478,16 +523,16 @@ it('should return empty array when it cannot parse', () =&gt; {
   
   return p.bind(rest);
 };</code></pre></div></div>
-<div class="sl-block" data-block-type="code" style="width: 623px; height: 203px; left: 29px; top: 437px;" data-block-id="9fbb672c6e103dd3ea6e9fa17b70bbf7"><div class="sl-block-content" style="z-index: 12; font-size: 129%;"><pre class="cs"><code>it('should parse digits and sum them up', () =&gt; {
-  var res = parse.chainl1(
+<div class="sl-block" data-block-type="code" style="width: 623px; height: 203px; left: 29px; top: 441px;" data-block-id="9fbb672c6e103dd3ea6e9fa17b70bbf7"><div class="sl-block-content" style="z-index: 12; font-size: 129%;"><pre class="cs"><code>it('should parse digits and sum them up', () =&gt; {
+  var result = parse.chainl1(
     parse.digit.bind(x =&gt; parse.unit(parseInt(x))),
     parse.unit(a =&gt; b =&gt; a + b))('123a');
 
-  expect(res[0]).toEqual([6, 'a']);
+  expect(result[0]).toEqual([6, 'a']);
 });</code></pre></div></div>
 <div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 379px;" data-block-id="1af9319958ef115560f7ff33b791d4cb"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255);">
 <h3>Example</h3>
-</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="db25106d35f2800367ef5de95f1a065d">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="6ac132a7e0d3da13553ada0bbeb2905f">
@@ -506,7 +551,23 @@ var token = &lt;A&gt;(p:Parser&lt;A&gt;):Parser&lt;A&gt; =&gt;
 var symb = (cs:string):Parser&lt;string&gt; =&gt; token(string(cs));
 
 var apply = &lt;A&gt;(p:Parser&lt;A&gt;, cs:string):[A, string][] =&gt; 
-    space.bind(_ =&gt; p)(cs);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+    space.bind(_ =&gt; p)(cs);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="d92c00f6c628461ebe7034f2aaeb13b3">
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="93c4642385a900f4dafa1b75aa1543e6">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<h1>A simple grammar</h1>
+</div>
+</div>
+
+
+
+<div class="sl-block" data-block-type="code" style="width: 767px; height: 322px; left: 123px; top: 226px;" data-block-id="125b61f29e3eac7eb60360e795baa602"><div class="sl-block-content" style="z-index: 12; font-size: 226%;"><pre class="bash"><code>expr ::= expr addop term | term
+term ::= term mulop factor | factor
+factor ::= digit | ( expr )
+digit ::= 0 | 1 | . . . | 9
+addop ::= + | -
+mulop ::= * | /</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="97b7fd8ef399f919f4488e129e6daea2">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="cf3994b2a343578b31683fb6b96d4042">
@@ -527,7 +588,7 @@ var term:Parser&lt;number&gt;;
 
 var factor:Parser&lt;number&gt;;
 
-var numericDigit:Parser&lt;number&gt;;</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+var numericDigit:Parser&lt;number&gt;;</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="4f4a9075bd43ab43a75361aa7ee69284">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="bdd885ec8b39d9e6f1985d6c6567c282">
@@ -546,7 +607,7 @@ var numericDigit:Parser&lt;number&gt;;</code></pre></div></div></section><sectio
 mulop = pplus(
   symb('*').bind(_ =&gt; unit(a =&gt; b =&gt; a * b)),
   symb('/').bind(_ =&gt; unit(a =&gt; b =&gt; a / b))
-);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="48e0c22a67246acbcdf0e52e7c6e2cb2">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="96845ca871544d69a2c5ea587f1d61d8">
@@ -557,7 +618,7 @@ mulop = pplus(
 
 
 
-<div class="sl-block" data-block-type="code" style="width: 917px; height: 375px; left: 27px; top: 210px;" data-block-id="5bb9513341c21a7eea00c900b74e9f44"><div class="sl-block-content" style="z-index: 11; font-size: 150%;"><pre class="cs"><code>numericDigit = token(digit).bind(x =&gt; unit(parseInt(x)));
+<div class="sl-block" data-block-type="code" style="width: 923px; height: 375px; left: 27px; top: 210px;" data-block-id="5bb9513341c21a7eea00c900b74e9f44"><div class="sl-block-content" style="z-index: 11; font-size: 144%;"><pre class="cs"><code>numericDigit = token(digit).bind(x =&gt; unit(parseInt(x)));
 
 factor = pplus(
   numericDigit,
@@ -565,7 +626,7 @@ factor = pplus(
 );
 
 term = chainl1(factor, mulop);
-expr = chainl1(term, addop);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f">
+expr = chainl1(term, addop);</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="c36079e30414f1c96372ac846d76f7e0">
 
 
 <div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="d4b3494dc91d6682f1ed334cf8608f0d">
@@ -576,19 +637,118 @@ expr = chainl1(term, addop);</code></pre></div></div></section><section class="h
 
 
 
-<div class="sl-block" data-block-type="code" style="width: 865px; height: 196px; left: 49px; top: 268px;" data-block-id="aeec24bbad3632f856f8d2a69310f753"><div class="sl-block-content" style="z-index: 11; font-size: 144%;"><pre class="cs"><code>it('should parse and evaluate arithmetic expression', () =&gt; {
+<div class="sl-block" data-block-type="code" style="width: 935px; height: 227px; left: 18px; top: 256px;" data-block-id="aeec24bbad3632f856f8d2a69310f753"><div class="sl-block-content" style="z-index: 11; font-size: 158%;"><pre class="cs"><code>it('should parse and evaluate arithmetic expression', () =&gt; {
   var result = parse.apply(parse.expr, ' 1 - 2 * (3 - 1) + 2 ');
 
   expect(result.length).toBe(1);
   expect(result[0]).toEqual([-1, '']);
-});</code></pre></div></div></section>
+});</code></pre></div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="747c1092a4a5bbed4338e6f710ba50c4"><div class="sl-block" data-block-type="text" style="width: 851px; left: 55px; top: 285px; height: auto;" data-block-id="f52e45575caa6c38c5d0225e1e27520d"><div class="sl-block-content" data-placeholder-tag="h1" data-placeholder-text="Title Text" style="color: rgb(255, 153, 0); font-size: 135%;">
+<h1>State of the art?</h1>
+</div></div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="3ff05f1a354d1b9ddfdc00a420777a53"><div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 251.552795031056px; height: 300px; left: 120px; top: 204px;" data-block-id="faba402ce8f64d81b72203a7721538f8"><div class="sl-block-content" style="z-index: 10; border-style: solid; border-width: 1px;"><img style="visibility: visible;" data-natural-width="405" data-natural-height="483" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1213883/Capture.PNG"></div></div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 360px; height: 272.727272727273px; left: 490px; top: 231px;" data-block-id="056b646e29a59055246ca86a9e39c470"><div class="sl-block-content" style="z-index: 12; border-style: solid; border-width: 1px;"><img style="visibility: visible;" data-natural-width="198" data-natural-height="150" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1213885/687474703a2f2f692e696d6775722e636f6d2f77794b4f662e706e67.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 245px; left: 143px; top: 513px;" data-block-id="5fa4e59559c28cddf2a79a56bdbeda02"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13; color: rgb(255, 255, 255); font-size: 69%;">
+<blockquote>
+<p>http://bennu-js.com</p>
+</blockquote>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; min-width: 30px; min-height: 30px; width: 390px; left: 468px; top: 513px;" data-block-id="159dda09af545e497ac8c81d11fdc583"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14; color: rgb(255, 255, 255); font-size: 69%;">
+<blockquote>
+<p>https://github.com/jneen/parsimmon</p>
+</blockquote>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="0a94d37d1e40cd4043724ebf551d0d81">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15; color: rgb(255, 255, 255);">
+<h1>State of the art!</h1>
+</div>
+</div></section><section class="has-dark-background" data-background-color="#3f3f3f" data-id="09fd286daaf44b080bc5fc5ae2773d21"><div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 27px; top: 43px;" data-block-id="8d35477a317bc4962c93f5db2a6ade1f">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; color: rgb(255, 255, 255);">
+<h1>parsimmon: json</h1>
+</div>
+</div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 434px; height: 524px; left: 21px; top: 159px;" data-block-id="4bc6b65f8f45bdd69728bea85f9513bd"><div class="sl-block-content" style="z-index: 12; font-size: 68%;"><pre class="javascript"><code>var json = (function() {
+  // local imports
+  var string = Parsimmon.string;
+  var regex = Parsimmon.regex;
+  var succeed = Parsimmon.succeed;
+  var seq = Parsimmon.seq;
+  var seqMap = Parsimmon.seqMap;
+  var alt = Parsimmon.alt;
+  var lazy = Parsimmon.lazy;
+
+  // whitespace, etc
+  var ignore = regex(/\s*/m);
+  function lexeme(p) { return p.skip(ignore); }
+
+  // lexemes
+  var lbrace = lexeme(string('{'));
+  var rbrace = lexeme(string('}'));
+  var lbrack = lexeme(string('['));
+  var rbrack = lexeme(string(']'));
+  var quoted = lexeme(regex(/"((?:\\.|.)*?)"/, 1))
+                .desc('a quoted string');
+  var comma = lexeme(string(','));
+  var colon = lexeme(string(':'));
+  var number = lexeme(regex(/-?(0|[1-9]\d*)
+    ([.]\d+)?(e[+-]?\d+)?/i)).desc('a numeral');
+
+  var nullLiteral = lexeme(string('null')).result(null);
+  var trueLiteral = lexeme(string('true')).result(true);
+  var falseLiteral = lexeme(string('false')).result(false);
+
+ // forward-declared base parser
+  var json = lazy('a json element', function() {
+    return alt(
+      object,
+      array,
+      stringLiteral,
+      numberLiteral,</code></pre></div></div>
+<div class="sl-block" data-block-type="code" style="min-width: 30px; min-height: 30px; width: 541px; height: 524px; left: 419px; top: 159px;" data-block-id="9c38911f3144e2ac5d8c6c7b8a29a1df"><div class="sl-block-content" style="z-index: 13; font-size: 68%;"><pre><code>      nullLiteral,
+      trueLiteral,
+      falseLiteral
+    );
+  });
+
+  // domain parsers
+  var stringLiteral = quoted.map(interpretEscapes);
+
+  var numberLiteral = number.map(parseFloat)
+
+  function commaSep(parser) {
+    var commaParser = comma.then(parser).many()
+    return seqMap(parser, commaParser, function(first, rest) {
+      return [first].concat(rest);
+    }).or(succeed([]));
+  }
+
+  var array = seqMap(lbrack, commaSep(json), rbrack, function(_, results, __) {
+    return results;
+  });
+
+  var pair = seq(stringLiteral.skip(colon), json);
+
+  var object = seqMap(lbrace, commaSep(pair), rbrace, function(_, pairs, __) {
+    var out = {};
+    for (var i = pairs.length-1; i &gt;= 0; i -= 1) {
+      out[pairs[i][0]] = pairs[i][1];
+    }
+    return out;
+  });
+
+  // top-level parser, with whitespace at the beginning
+  return ignore.then(json);
+})();</code></pre></div></div></section><section class="has-light-background" data-background-color="#ffffff" data-background-size="contain" data-id="f4d72fe784b782c62c07b4e1437fe246"><div class="sl-block" data-block-type="text" style="height: auto; width: 908px; left: 26px; top: 117px;" data-block-id="090f925130e2ba1b5769276122bcb98c">
+    <div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10; color: rgb(255, 255, 255); font-size: 101%; text-align: center;">
+<h1>THANKS FOR YOUR ATTENTION</h1>
+</div>
+</div>
+<div class="sl-block" data-block-type="image" style="min-width: 30px; min-height: 30px; width: 852.444444444445px; height: 700px; left: 54px; top: 0px;" data-block-id="30559fb46e30c4ca5c4cda2cb0019648"><div class="sl-block-content" style="z-index: 0;"><img style="visibility: visible;" data-natural-width="1096" data-natural-height="900" data-src="https://s3.amazonaws.com/media-p.slid.es/uploads/simone_b/images/1214045/IMG_20141226_105401.jpg"></div></div></section>
 			</div>
 		</div>
 
 
 		
 <script>
-	var SLConfig = {"current_user":{"id":296992,"username":"simone_b","name":"Simone Busoli","description":"","thumbnail_url":"https://lh5.googleusercontent.com/-6s4Yd1PPN2o/AAAAAAAAAAI/AAAAAAAAQGI/xg9yHY1suQo/photo.jpg?sz=50","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true,"email":"simone.busoli@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"settings":{"id":124981,"present_controls":true,"present_upsizing":true,"editor_grid":true,"editor_snap":true,"developer_mode":true}},"deck":{"id":371321,"slug":"mpct","title":"Monadic parser combinators with TypeScript","description":"","visibility":"all","published_at":"2015-03-21T13:41:20.579Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/secure/06c6ad/decks.jpg","view_count":0,"user":{"id":296992,"username":"simone_b","name":"Simone Busoli","description":"","thumbnail_url":"https://lh5.googleusercontent.com/-6s4Yd1PPN2o/AAAAAAAAAAI/AAAAAAAAQGI/xg9yHY1suQo/photo.jpg?sz=50","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"access_token":"VAKB7agiqVZoecNyFje5pTrDty4r","notes":{"a3b02dbe92dc0fe6ca6ef3eceeda0bfe":"I'll tell you about myself","84100a7dc3592bdb9a76eb624921e634":"- who am I: italian, ferrari, bwin, thoughtworks, freelance\n- this guy here: more info on website\n- linkedin\n- get in touch after: github","0f8ab37d08f84a94de0e8854acb3d825":"raise hands: \n\n- know?\n- used?","c3989f394b621367b31828949a259f6a":"- superset\n- valid javascript --\u003e valid typescript\n- by microsoft but open source\n- compiler\n- static type checking\n- classes, interfaces, modules","4a77d1b3e66964338faa0c442690f0db":"- creator of C#\n- watch video on website\n- you would expect static features\n- rationale: static -\u003e better?","72cdd3cc3f943051ce0801f0356b9a93":"- interesting / short / readable\n- encourage to look them up\n- examples also in haskell","331162be3993954c5ca0b73d81f7c795":"- one of the guys behind LINQ / reactive extensions\n\n- why typescript: getting type right without support from a compiler or a programming language (haskell)","a11c4d905294a95dbf5faaad503fe216":"- describe what result is\n- tuple!\n- reason for array of results: ambiguous grammars","0934031d9b1188e92b386b0b5437b626":"reason for array of results: ambiguous grammars","292548cb2f09b743f32e91ad07d5c2c1":"- observe lambda expression syntax\n- lack of pattern matching","dbe8c1fece206b25c8701414efedfbe7":"- jasmine\n- no typing in the result for simplicity","40af79b808533c54639aeb19bed2d9ce":"- explain what it does","f1003928c9d0de6bca391ffde79cd8f0":"- monad laws","4cd53fe7fbccfac41ca250ad25ea64ad":"explain typescript way of making a callable object"}}};
+	var SLConfig = {"current_user":{"id":296992,"username":"simone_b","name":"Simone Busoli","description":"","thumbnail_url":"https://lh5.googleusercontent.com/-6s4Yd1PPN2o/AAAAAAAAAAI/AAAAAAAAQGI/xg9yHY1suQo/photo.jpg?sz=50","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true,"email":"simone.busoli@gmail.com","notify_on_receipt":true,"billing_address":null,"editor_tutorial_completed":true,"settings":{"id":124981,"present_controls":true,"present_upsizing":true,"editor_grid":false,"editor_snap":true,"developer_mode":true}},"deck":{"id":371321,"slug":"mpct","title":"Monadic parser combinators with TypeScript","description":"","visibility":"all","published_at":"2015-03-21T13:41:20.579Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/secure/06c6ad/decks.jpg","view_count":2,"user":{"id":296992,"username":"simone_b","name":"Simone Busoli","description":"","thumbnail_url":"https://lh5.googleusercontent.com/-6s4Yd1PPN2o/AAAAAAAAAAI/AAAAAAAAQGI/xg9yHY1suQo/photo.jpg?sz=50","pro":false,"enterprise":false,"enterprise_manager":false,"registered":true},"background_transition":"slide","transition":"slide","theme_id":null,"theme_font":"montserrat","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":true,"rolling_links":false,"center":false,"should_loop":false,"rtl":false,"version":2,"access_token":"VAKB7agiqVZoecNyFje5pTrDty4r","notes":{"a3b02dbe92dc0fe6ca6ef3eceeda0bfe":"I'll tell you about myself","84100a7dc3592bdb9a76eb624921e634":"- who am I: italian, ferrari, bwin, thoughtworks, freelance\n- this guy here: more info on website\n- linkedin\n- get in touch after: github","0f8ab37d08f84a94de0e8854acb3d825":"raise hands: \n\n- know?\n- used?","c3989f394b621367b31828949a259f6a":"- superset\n- valid javascript --\u003e valid typescript\n- by microsoft but open source\n- compiler\n- static type checking\n- classes, interfaces, modules","4a77d1b3e66964338faa0c442690f0db":"- creator of C#\n- watch video on website\n- you would expect static features\n- rationale: static -\u003e better?","72cdd3cc3f943051ce0801f0356b9a93":"- interesting / short / readable\n- encourage to look them up\n- examples also in haskell","331162be3993954c5ca0b73d81f7c795":"- one of the guys behind LINQ / reactive extensions\n\n- why typescript: getting type right without support from a compiler or a programming language (haskell)","a11c4d905294a95dbf5faaad503fe216":"- interface\n- generic\n- function signature interface\n- tuple\n\n- describe what result is:\n- reason for array of results: ambiguous grammars","0934031d9b1188e92b386b0b5437b626":"reason for array of results: ambiguous grammars","292548cb2f09b743f32e91ad07d5c2c1":"- observe lambda expression syntax\n- lack of pattern matching","dbe8c1fece206b25c8701414efedfbe7":"- jasmine\n- no typing in the result for simplicity","40af79b808533c54639aeb19bed2d9ce":"- explain what it does","f1003928c9d0de6bca391ffde79cd8f0":"- monad laws","4cd53fe7fbccfac41ca250ad25ea64ad":"explain typescript way of making a callable object","d98a30ecca346953c343f0cdec70c88b":"conditional combinator","598cd15bb56064d211b20061a0d5cba9":"parse a specific string","e7580e5b6746311bc4216c2c6e7b4281":"many applications of parser p, at least one, and concatenates the results","57b97bd4f97d1002943d0854ae15a6b1":"many applications of parser p, zero or more","21bf3617b7fd45393264c99e630e228c":"sep: results are thrown away","780b8f39fdb77dab136cf590008812ec":"repeated applications of p, separated by applications of parser op, whose result is an operator assumed to associate to the left\n\nsimilarly, chainr1"}}};
 </script>
 
 		<script>
